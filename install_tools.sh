@@ -61,6 +61,7 @@ echo ""
 echo "[*] Installing tools via Go..."
 
 GO_TOOLS=(
+    "github.com/tomnomnom/gf@latest"
     "github.com/tomnomnom/assetfinder@latest"
     "github.com/lc/gau/v2/cmd/gau@latest"
     "github.com/hahwul/dalfox/v2@latest"
@@ -68,6 +69,7 @@ GO_TOOLS=(
 )
 
 GO_TOOL_NAMES=(
+    "gf"
     "assetfinder"
     "gau"
     "dalfox"
@@ -111,7 +113,7 @@ echo "============================================="
 echo "[*] Installation Verification"
 echo "============================================="
 
-ALL_TOOLS=(subfinder httpx nuclei ffuf nmap assetfinder gau dalfox subjack)
+ALL_TOOLS=(subfinder httpx nuclei ffuf nmap gf assetfinder gau dalfox subjack)
 INSTALLED=0
 MISSING=0
 

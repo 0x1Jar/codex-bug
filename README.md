@@ -122,6 +122,7 @@ python3 modules/reporting/report_generator.py findings/example.com
 - `nuclei` — template-based vulnerability scanning
 - `ffuf` — directory and endpoint fuzzing
 - `nmap` — open port and service detection
+- `gf` — parameter and URL classification by bug pattern
 - `gau` — historical URL collection
 - `dalfox` — XSS scanning
 - `subjack` — subdomain takeover checks
@@ -141,7 +142,7 @@ You can install the main scanning stack with:
 ./install_tools.sh
 ```
 
-This installer covers the primary tools above (`subfinder`, `httpx`, `nuclei`, `ffuf`, `nmap`, `assetfinder`, `gau`, `dalfox`, `subjack`).
+This installer covers the primary tools above (`subfinder`, `httpx`, `nuclei`, `ffuf`, `nmap`, `gf`, `assetfinder`, `gau`, `dalfox`, `subjack`).
 
 ## Project Layout
 
