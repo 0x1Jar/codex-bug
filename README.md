@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/codex-bug-bounty-logo.svg" alt="Codex Bug Bounty Logo" width="760" />
+
 # Codex Bug Bounty
 
 **Codex-first bug bounty harness for Web2 + Web3: recon, hunting, validation, and reporting.**

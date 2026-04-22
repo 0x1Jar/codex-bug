@@ -1,0 +1,63 @@
+<svg width="1200" height="640" viewBox="0 0 1200 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bugWarm" x1="350" y1="80" x2="880" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF8A5B"/>
+      <stop offset="1" stop-color="#E45535"/>
+    </linearGradient>
+    <linearGradient id="codexBlue" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="640" fill="#050B18"/>
+
+  <g transform="translate(610,190)" filter="url(#softGlow)">
+    <g stroke="url(#bugWarm)" stroke-width="28" stroke-linecap="round" opacity="0.95">
+      <line x1="-250" y1="-5" x2="-170" y2="-5"/>
+      <line x1="-228" y1="-80" x2="-160" y2="-52"/>
+      <line x1="-170" y1="-145" x2="-120" y2="-95"/>
+      <line x1="-90" y1="-180" x2="-55" y2="-112"/>
+      <line x1="250" y1="-5" x2="170" y2="-5"/>
+      <line x1="228" y1="-80" x2="160" y2="-52"/>
+      <line x1="170" y1="-145" x2="120" y2="-95"/>
+      <line x1="90" y1="-180" x2="55" y2="-112"/>
+    </g>
+
+    <path d="M-48 -195C-70 -230 -105 -235 -130 -212" stroke="url(#bugWarm)" stroke-width="14" stroke-linecap="round"/>
+    <path d="M48 -195C70 -230 105 -235 130 -212" stroke="url(#bugWarm)" stroke-width="14" stroke-linecap="round"/>
+
+    <ellipse cx="0" cy="-168" rx="70" ry="50" fill="url(#bugWarm)"/>
+    <circle cx="-26" cy="-176" r="7" fill="#050B18"/>
+    <circle cx="26" cy="-176" r="7" fill="#050B18"/>
+
+    <ellipse cx="0" cy="-45" rx="106" ry="122" fill="url(#bugWarm)"/>
+    <path d="M0 -118C-68 -108 -103 -65 -97 -17C-78 -17 -45 -7 0 10C45 -7 78 -17 97 -17C103 -65 68 -108 0 -118Z" fill="#050B18"/>
+    <path d="M0 10C-38 -7 -67 -17 -97 -17C-90 45 -53 87 0 120C53 87 90 45 97 -17C67 -17 38 -7 0 10Z" fill="#050B18"/>
+    <path d="M0 10L0 120" stroke="#050B18" stroke-width="10" stroke-linecap="round"/>
+
+    <g stroke="url(#bugWarm)" stroke-width="12" stroke-linecap="round">
+      <path d="M-108 15L-144 40L-156 72"/>
+      <path d="M108 15L144 40L156 72"/>
+      <path d="M-102 64L-132 90L-130 118"/>
+      <path d="M102 64L132 90L130 118"/>
+    </g>
+  </g>
+
+  <g transform="translate(390,430)">
+    <rect x="0" y="0" width="155" height="52" rx="7" fill="#6B7280"/>
+    <rect x="155" y="0" width="270" height="52" rx="7" fill="url(#codexBlue)"/>
+    <text x="78" y="34" text-anchor="middle" font-family="monospace" font-size="32" fill="#F9FAFB">V2.2.0</text>
+    <text x="290" y="34" text-anchor="middle" font-family="monospace" font-weight="700" font-size="30" letter-spacing="3" fill="#F8FAFC">CODEX HUNTER</text>
+  </g>
+
+  <text x="600" y="545" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="70" font-weight="700" fill="#E5EDF8">Codex Bug Bounty</text>
+  <text x="600" y="592" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="24" fill="#9FB3D1">Recon · Hunt · Validate · Report</text>
+</svg>
