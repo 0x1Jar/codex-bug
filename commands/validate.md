@@ -1,8 +1,10 @@
 ---
-description: Validate a finding — runs 7-Question Gate + 4-gate checklist. Kills weak findings before report writing. Prevents N/A submissions that hurt validity ratio. Usage: /validate
+description: Reference prompt doc for full finding validation before writing a report. Use this in Codex chat or pair it with the canonical validate.py runtime.
 ---
 
-# /validate
+# Validation Reference Prompt
+
+> Reference doc only. This repo does not add a built-in `/validate` slash command to Codex CLI.
 
 Run full validation on the current finding before writing a report.
 
@@ -13,10 +15,10 @@ Run full validation on the current finding before writing a report.
 3. Runs 4 pre-submission gates
 4. Outputs: PASS (write the report) or KILL (move on)
 
-## Usage
+## Suggested Prompt
 
 ```
-/validate
+"Use the triage-validation skill to fully validate this finding before any report is written."
 ```
 
 Describe the finding when prompted. Include:
@@ -126,7 +128,7 @@ If no chain → KILL IT. If chain confirmed → report both together.
 
 ## Output
 
-**PASS:** "All 7 questions pass. All 4 gates pass. Proceed to /report."
+**PASS:** "All 7 questions pass. All 4 gates pass. Proceed to report writing."
 
 **KILL:** "Q[N] fails because [reason]. Kill this finding. Reason: [explanation]. Move on."
 

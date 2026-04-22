@@ -1,19 +1,21 @@
 ---
-description: Quick 7-Question Gate triage on a finding before writing a report. Kills N/A submissions before they happen. Faster than /validate — for quick go/no-go decisions. Usage: /triage
+description: Reference prompt doc for quick go-no-go triage on a finding before spending time on a full report. Use this in Codex chat for fast validation.
 ---
 
-# /triage
+# Triage Reference Prompt
+
+> Reference doc only. This repo does not add a built-in `/triage` slash command to Codex CLI.
 
 Quick triage to decide: submit or kill?
 
 ## When to Use
 
-Use this before spending time writing a full report. If triage passes, run `/validate` for the full 4-gate check, then `/report`.
+Use this before spending time writing a full report. If triage passes, use the validation workflow for the full 4-gate check, then move to report writing.
 
-## Usage
+## Suggested Prompt
 
 ```
-/triage
+"Use the triage-validation skill to give me a fast go-no-go decision on this finding."
 ```
 
 Describe the finding in one sentence. Example:
@@ -84,7 +86,7 @@ If you can't build the chain today → KILL IT.
 
 ## Output
 
-**GO:** "All 7 pass. Run /validate for full check, then /report."
+**GO:** "All 7 pass. Run the full validation workflow, then move to report writing."
 
 **KILL [reason]:**
 - "Q1 fails — no HTTP request yet"

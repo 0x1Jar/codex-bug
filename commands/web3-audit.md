@@ -1,17 +1,19 @@
 ---
-description: Smart contract security audit — runs through 10 bug class checklist (accounting desync, access control, incomplete path, off-by-one, oracle errors, ERC4626, reentrancy, flash loan, signature replay, proxy/upgrade). Applies pre-dive kill signals first. Generates Foundry PoC template for confirmed findings. Usage: /web3-audit <contract.sol>
+description: Reference prompt doc for smart contract auditing with the web3-audit skill. Use this in Codex chat or adapt it to a direct contract review workflow.
 ---
 
-# /web3-audit
+# Web3 Audit Reference Prompt
+
+> Reference doc only. This repo does not add a built-in `/web3-audit` slash command to Codex CLI.
 
 Smart contract security audit using the 10-bug-class methodology.
 
-## Usage
+## Suggested Prompt
 
 ```
-/web3-audit VulnerableContract.sol
-/web3-audit https://github.com/protocol/contracts
-/web3-audit [paste contract code]
+"Use the web3-audit skill on VulnerableContract.sol."
+"Use the web3-audit skill on https://github.com/protocol/contracts."
+"Use the web3-audit skill on this pasted contract code."
 ```
 
 ## Step 0: Pre-Dive Kill Signals

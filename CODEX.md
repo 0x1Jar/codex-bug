@@ -4,15 +4,16 @@ This repo is now **Codex-first** for professional bug bounty hunting across Hack
 
 ## Primary Mode (Codex)
 
-Use skills-first flow in Codex:
+Use skills-first flow in Codex with natural-language prompts:
 
 ```bash
 codex
-# /recon target.com
-# /hunt target.com
-# /validate
-# /report
+# "Use the web2-recon skill to map example.com and summarize the best attack surface."
+# "Use the bug-bounty skill to plan the next hunting step for example.com."
+# "Use the report-writing skill to turn this validated finding into a submission-ready report."
 ```
+
+Skills are selected by relevance. This repo does not register repo-specific slash commands in Codex CLI.
 
 Install to Codex paths:
 
@@ -40,18 +41,18 @@ Install to Codex paths:
 | `skills/report-writing/` | H1/Bugcrowd/Intigriti/Immunefi report templates, CVSS 3.1, human tone |
 | `skills/triage-validation/` | 7-Question Gate, 4 gates, never-submit list, conditionally valid table |
 
-### Commands (Cheatsheet Prompts)
+### Reference Prompt Docs
 
-| Command | Usage |
+| Doc | Purpose |
 |---|---|
-| `/recon` | `/recon target.com` — full recon pipeline |
-| `/hunt` | `/hunt target.com` — start hunting |
-| `/validate` | `/validate` — run 7-Question Gate on current finding |
-| `/report` | `/report` — write submission-ready report |
-| `/chain` | `/chain` — build A→B→C exploit chain |
-| `/scope` | `/scope <asset>` — verify asset is in scope |
-| `/triage` | `/triage` — quick 7-Question Gate |
-| `/web3-audit` | `/web3-audit <contract.sol>` — smart contract audit |
+| `recon.md` | Reference prompts for full recon workflow |
+| `hunt.md` | Reference prompts for active hunting |
+| `validate.md` | Reference prompts for full finding validation |
+| `report.md` | Reference prompts for submission-ready reports |
+| `chain.md` | Reference prompts for exploit-chain building |
+| `scope.md` | Reference prompts for scope checks |
+| `triage.md` | Reference prompts for quick go/no-go validation |
+| `web3-audit.md` | Reference prompts for smart contract review |
 
 ### Agents (Templates)
 
@@ -68,12 +69,12 @@ Install to Codex paths:
 
 ### Tools (Python/shell — run directly)
 
-Located in repo root:
-- `hunt.py` — master orchestrator
-- `recon_engine.sh` — subdomain + URL discovery
-- `validate.py` — 4-gate finding validator
-- `report_generator.py` — report writer
-- `learn.py` — CVE + disclosure intel
+Use the canonical scripts under `modules/*`:
+- `modules/orchestrator/hunt.py` — master orchestrator
+- `modules/recon/recon_engine.sh` — subdomain + URL discovery
+- `modules/reporting/validate.py` — 4-gate finding validator
+- `modules/reporting/report_generator.py` — report writer
+- `modules/orchestrator/learn.py` — CVE + disclosure intel
 
 ## Critical Rules
 

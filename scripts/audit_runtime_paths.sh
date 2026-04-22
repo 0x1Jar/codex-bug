@@ -8,6 +8,7 @@ cd "$REPO_DIR"
 FILES=(
   install.sh
   README.md
+  CODEX.md
   docs/project-structure.md
   scripts/smoke_codex_support.sh
   hunt.py
@@ -41,3 +42,21 @@ if [[ -n "$matches" ]]; then
 fi
 
 echo "PASS: no stale hardcoded tools/ execution references"
+
+echo "Auditing Codex-facing docs for unsupported slash-command claims..."
+
+DOC_FILES=(
+  README.md
+  CODEX.md
+  install.sh
+)
+
+slash_matches="$(rg -n '(^|[[:space:]#"`])/(recon|hunt|validate|report|chain|scope|triage|web3-audit)([[:space:]`"]|$)' "${DOC_FILES[@]}" || true)"
+
+if [[ -n "$slash_matches" ]]; then
+  echo "FAIL: unsupported Codex slash-command claims found"
+  echo "$slash_matches"
+  exit 1
+fi
+
+echo "PASS: Codex-facing docs no longer advertise unsupported slash commands"

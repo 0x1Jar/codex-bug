@@ -1,21 +1,23 @@
 ---
-description: Write a submission-ready bug bounty report. Generates H1/Bugcrowd/Intigriti/YesWeHack/Immunefi format with CVSS 3.1 score, proof of concept, impact statement, and remediation. Run /validate first. Usage: /report
+description: Reference prompt doc for writing a submission-ready bug bounty report after validation. Use this in Codex chat or pair it with the canonical report_generator.py runtime.
 ---
 
-# /report
+# Report Reference Prompt
+
+> Reference doc only. This repo does not add a built-in `/report` slash command to Codex CLI.
 
 Generate a submission-ready bug bounty report.
 
 ## Pre-Conditions
 
-Run `/validate` first. All 4 gates must pass before running this command.
+Run the validation workflow first. All 4 gates must pass before using this reference prompt.
 
 Never write a report before validating. N/A submissions hurt your validity ratio.
 
-## Usage
+## Suggested Prompt
 
 ```
-/report
+"Use the report-writing skill to turn this validated finding into a submission-ready report."
 ```
 
 Provide when prompted:

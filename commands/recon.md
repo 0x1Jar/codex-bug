@@ -1,8 +1,10 @@
 ---
-description: Run full recon pipeline on a target — subdomain enum (Chaos API + subfinder), live host discovery (dnsx + httpx), URL crawl (katana + waybackurls + gau), gf pattern classification, nuclei scan. Outputs to recon/<target>/ directory. Usage: /recon target.com
+description: Reference prompt doc for full recon on a target. Use this as a Codex prompt template or adapt it to the canonical runtime scripts under modules/recon.
 ---
 
-# /recon
+# Recon Reference Prompt
+
+> Reference doc only. This repo does not add a built-in `/recon` slash command to Codex CLI.
 
 Run the full recon pipeline on a target and produce a prioritized attack surface.
 
@@ -15,17 +17,17 @@ Run the full recon pipeline on a target and produce a prioritized attack surface
 5. Runs nuclei for known CVEs and misconfigs
 6. Outputs prioritized attack surface summary
 
-## Usage
+## Suggested Prompt
 
 ```
-/recon target.com
+"Use the web2-recon skill to map target.com and summarize the highest-value attack surface."
 ```
 
 Or with specific focus:
 ```
-/recon target.com --focus api
-/recon target.com --focus auth
-/recon target.com --fast     (skip historical URLs)
+"Use the web2-recon skill to focus on API attack surface for target.com."
+"Use the web2-recon skill to focus on auth flows for target.com."
+"Run the canonical recon script in fast mode for target.com."
 ```
 
 ## Steps
@@ -126,7 +128,7 @@ nuclei.txt              # Known CVE/misconfig findings
 2. Check `nuclei.txt` — any high/critical findings?
 3. Review `api-endpoints.txt` — start IDOR testing
 4. Check for admin panels: grep live-hosts for `/admin`, `/jenkins`, `/grafana`
-5. Run `/hunt target.com` to start active vulnerability testing
+5. Next, use the hunt reference prompt or run `python3 modules/orchestrator/hunt.py --target target.com --quick`
 
 ## 5-Minute Rule
 

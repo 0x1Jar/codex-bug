@@ -20,7 +20,7 @@
 This repository is structured for **Codex-first execution** with a clean `modules/` runtime layout.
 
 - 7 skill domains in `skills/`
-- 8 command cheatsheets in `commands/`
+- 8 reference prompt docs in `commands/`
 - 5 task-focused agent templates in `agents/`
 - Canonical runtime scripts under `modules/*`
 - Root-level compatibility wrappers for stable entrypoints
@@ -31,17 +31,21 @@ This repository is structured for **Codex-first execution** with a clean `module
 git clone https://github.com/0x1Jar/codex-bug.git
 cd codex-bug
 ./install.sh --target codex
+./install_tools.sh
 ```
 
-Then run in Codex:
+`install.sh` installs Codex skills plus reference prompt docs. `install_tools.sh` installs the external scanner/runtime dependencies. The actual executable entrypoints live under `modules/*`.
+
+Then use Codex with natural-language prompts:
 
 ```bash
 codex
-# /recon target.com
-# /hunt target.com
-# /validate
-# /report
+# "Use the web2-recon skill to map example.com and summarize the best attack surface."
+# "Use the bug-bounty skill to plan the next hunting step for example.com."
+# "Use the triage-validation skill to decide whether this finding is reportable."
 ```
+
+Skills are auto-selected by relevance. Files in `commands/` are reference prompt docs only, not custom Codex slash commands.
 
 ## Beginner API Setup (Recommended)
 
@@ -97,7 +101,7 @@ Most reliable practice today:
 - `CHAOS_API_KEY` via environment variable
 - HackerOne tokens via CLI arguments (or manual assignment in `h1_run.sh`)
 
-## Direct Runtime Commands (Latest / Canonical)
+## Direct Runtime Commands (Deterministic / Canonical)
 
 ```bash
 python3 modules/orchestrator/hunt.py --status
@@ -151,7 +155,7 @@ This installer covers the primary tools above (`subfinder`, `httpx`, `nuclei`, `
 │   ├── reporting/            # validation + report generation
 │   └── support/              # shared helper space
 ├── skills/                   # Codex skill domains
-├── commands/                 # command cheatsheets
+├── commands/                 # reference prompt docs (not Codex slash commands)
 ├── agents/                   # agent templates
 ├── docs/                     # supporting documentation
 ├── rules/                    # hunting/reporting rules
@@ -184,16 +188,16 @@ Skills (`skills/*/SKILL.md`):
 - `report-writing`
 - `web3-audit`
 
-Commands (`commands/*.md`):
+Reference prompt docs (`commands/*.md`, docs only):
 
-- `/recon`
-- `/hunt`
-- `/validate`
-- `/report`
-- `/chain`
-- `/scope`
-- `/triage`
-- `/web3-audit`
+- `recon.md`
+- `hunt.md`
+- `validate.md`
+- `report.md`
+- `chain.md`
+- `scope.md`
+- `triage.md`
+- `web3-audit.md`
 
 Agents (`agents/*.md`):
 

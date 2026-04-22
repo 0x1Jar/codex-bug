@@ -122,7 +122,7 @@ install_skills() {
 
 install_commands() {
     local dest_root="$1"
-    echo "Installing command cheatsheet -> $dest_root"
+    echo "Installing command reference docs -> $dest_root"
     run_cmd mkdir -p "$dest_root"
 
     for cmd_file in "$REPO_DIR"/commands/*.md; do
@@ -166,8 +166,12 @@ fi
 echo
 echo "Quick start (Codex):"
 echo "  codex"
-echo "  /recon target.com"
-echo "  /hunt target.com"
+echo '  Ask: "Use the web2-recon skill to map example.com and summarize the attack surface."'
+echo '  Ask: "Use the bug-bounty skill to plan the next hunting step for example.com."'
+echo '  Or run: bash modules/recon/recon_engine.sh example.com'
+
+echo
+echo "Reference docs in ~/.codex/commands are cheatsheets only, not built-in Codex slash commands."
 
 echo
 echo "Claude compatibility is still supported through --target claude or --target both."

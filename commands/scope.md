@@ -1,8 +1,10 @@
 ---
-description: Check if a target asset is in scope for the program before hunting or submitting. Reads program scope page, checks asset against in-scope and out-of-scope lists, verifies the asset is owned by the target organization. Usage: /scope <asset>
+description: Reference prompt doc for checking whether an asset is in scope before hunting or reporting. Use this in Codex chat as a repeatable scope-review workflow.
 ---
 
-# /scope
+# Scope Reference Prompt
+
+> Reference doc only. This repo does not add a built-in `/scope` slash command to Codex CLI.
 
 Verify an asset is in scope before hunting or submitting a finding.
 
@@ -13,13 +15,13 @@ Always check scope BEFORE the first request.
 
 **Real example:** City of Vienna explicitly excludes `/advuew/*`. Submitting XSS on that path = instant close.
 
-## Usage
+## Suggested Prompt
 
 ```
-/scope api.target.com
-/scope https://target.com/api/v2/users
-/scope target-staging.company.com
-/scope *.company.com
+"Check whether api.target.com is in scope before hunting."
+"Check whether https://target.com/api/v2/users is in scope before testing."
+"Check whether target-staging.company.com is in scope before reporting."
+"Check whether *.company.com is covered by the program scope."
 ```
 
 ## Scope Check Process

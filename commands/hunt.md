@@ -1,8 +1,10 @@
 ---
-description: Start hunting on a target — loads scope, reads disclosed reports, picks best attack surface based on tech stack, runs targeted vuln checks. Usage: /hunt target.com [--vuln-class ssrf|idor|xss|sqli|oauth|race|graphql|llm|upload|business-logic]
+description: Reference prompt doc for active vulnerability hunting on a target. Use this in Codex chat or adapt it to the canonical hunt workflow under modules/orchestrator.
 ---
 
-# /hunt
+# Hunt Reference Prompt
+
+> Reference doc only. This repo does not add a built-in `/hunt` slash command to Codex CLI.
 
 Active vulnerability hunting on a target.
 
@@ -14,14 +16,14 @@ Active vulnerability hunting on a target.
 4. Runs targeted tests for the highest-ROI bug classes
 5. Documents findings with exact HTTP requests
 
-## Usage
+## Suggested Prompt
 
 ```
-/hunt target.com
-/hunt target.com --vuln-class idor
-/hunt target.com --vuln-class ssrf
-/hunt target.com --vuln-class graphql
-/hunt target.com --source-code   (if repo is available)
+"Use the bug-bounty skill to hunt target.com."
+"Use the bug-bounty skill to hunt target.com with a focus on IDOR."
+"Use the bug-bounty skill to hunt target.com with a focus on SSRF."
+"Use the bug-bounty skill to hunt target.com with a focus on GraphQL."
+"Audit the available source code for target.com using the bug-bounty workflow."
 ```
 
 ## Phase 1: Read Before Touching (15 min)

@@ -1,8 +1,10 @@
 ---
-description: Build an exploit chain — given bug A, finds B and C to combine for higher severity and payout. Knows common chain patterns: IDOR→ATO, SSRF→cloud metadata, XSS→ATO, open redirect→OAuth theft, S3→bundle→secret→OAuth. Usage: /chain
+description: Reference prompt doc for building exploit chains from an initial finding. Use this in Codex chat when you want to turn bug A into a higher-value A-to-B chain.
 ---
 
-# /chain
+# Chain Reference Prompt
+
+> Reference doc only. This repo does not add a built-in `/chain` slash command to Codex CLI.
 
 Build an A→B→C exploit chain for higher severity and payout.
 
@@ -13,10 +15,10 @@ After confirming a standalone finding that:
 - Has been validated but classified as Low
 - Could be Medium or High if combined with another finding
 
-## Usage
+## Suggested Prompt
 
 ```
-/chain
+"Use the bug-bounty workflow to look for an A-to-B exploit chain starting from this confirmed finding."
 ```
 
 Describe bug A when prompted. Include:

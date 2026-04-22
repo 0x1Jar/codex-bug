@@ -109,7 +109,7 @@ DECISION: [PASS / KILL Q# / DOWNGRADE / CHAIN REQUIRED]
 REASON: [One clear sentence explaining why]
 
 ACTION: [What researcher should do next]
-- PASS: "Proceed to /report"
+- PASS: "Proceed to the report-writing workflow"
 - KILL: "Move on to the next lead"
 - DOWNGRADE: "Reproduce with two accounts and show victim PII in response, then re-triage"
 - CHAIN REQUIRED: "Build [specific chain]. Confirm it works end-to-end. Then report both together."
