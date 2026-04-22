@@ -87,14 +87,17 @@ def fetch_programs():
 
 def parse_h1_program(prog):
     """Parse a program from HackerOne directory API."""
+    bounty_max = prog.get("maximum_bounty_table_value", 0) or 0
+    bounty_min = prog.get("minimum_bounty_table_value", 0) or 0
     return {
         "name": prog.get("name", "Unknown"),
         "handle": prog.get("handle", ""),
         "url": f"https://hackerone.com/{prog.get('handle', '')}",
         "managed": prog.get("triage_active", False),
-        "bounty_min": prog.get("minimum_bounty_table_value", 0),
-        "bounty_max": prog.get("maximum_bounty_table_value", 0),
-        "response_efficiency": prog.get("response_efficiency_percentage", 0),
+        "bounty_min": bounty_min,
+        "bounty_max": bounty_max,
+        "offers_bounties": bounty_max > 0,
+        "response_efficiency": prog.get("response_efficiency_percentage", 0) or 0,
         "assets": prog.get("scopes", []),
         "has_wildcard": any(
             "*" in (s.get("asset_identifier", "") if isinstance(s, dict) else str(s))
@@ -128,11 +131,12 @@ def parse_bounty_targets_program(prog):
     return {
         "name": prog.get("name", "Unknown"),
         "handle": prog.get("handle", ""),
-        "url": f"https://hackerone.com/{prog.get('handle', '')}",
-        "managed": prog.get("managed", False),
+        "url": prog.get("url", f"https://hackerone.com/{prog.get('handle', '')}"),
+        "managed": bool(prog.get("managed_program", False)),
         "bounty_min": 0,
         "bounty_max": 0,
-        "response_efficiency": 0,
+        "offers_bounties": bool(prog.get("offers_bounties", False)),
+        "response_efficiency": prog.get("response_efficiency_percentage", 0) or 0,
         "assets": domains,
         "has_wildcard": has_wildcard,
         "started_accepting_at": prog.get("started_accepting_at", ""),
@@ -163,6 +167,12 @@ def get_curated_programs():
 def score_program(prog):
     """Score a program for targeting priority (higher = better)."""
     score = 0
+
+    # Prefer paid bug bounty programs over disclosure-only programs.
+    if prog.get("offers_bounties"):
+        score += 25
+    else:
+        score -= 15
 
     # Wildcard scope is very valuable (more attack surface)
     if prog.get("has_wildcard"):
