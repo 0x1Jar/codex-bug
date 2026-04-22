@@ -1,4 +1,28 @@
-# Changelog
+# Codex Changelog
+
+## v2.2.0 — Codex-First Modules Runtime (Apr 2026)
+
+### Added
+- `modules/` canonical runtime layout:
+  - `modules/orchestrator`
+  - `modules/recon`
+  - `modules/scanners`
+  - `modules/reporting`
+  - `modules/support`
+- Local Codex plugin metadata: `.codex-plugin/plugin.json`
+- `docs/project-structure.md` for simplified architecture guidance
+- Smoke and audit scripts:
+  - `scripts/smoke_codex_support.sh`
+  - `scripts/audit_runtime_paths.sh`
+
+### Changed
+- README rewritten for Codex-first usage and canonical `modules/*` entrypoints.
+- Root runtime scripts now act as compatibility wrappers that forward to canonical modules.
+- Runtime path resolution normalized for module-first execution with legacy fallback.
+- Documentation language standardized to English and Codex-first wording.
+
+### Removed
+- Non-essential root wrapper files to reduce top-level clutter; canonical implementations remain under `modules/*`.
 
 ## v2.1.0 — 20 Vuln Classes + Payload Expansion (Mar 2026)
 
@@ -43,7 +67,7 @@
 
 ## v2.0.0 — ECC-Style Plugin Architecture (Mar 2026)
 
-Major restructure into a full Claude Code plugin with multi-component architecture.
+Major restructure into a full Codex plugin with multi-component architecture.
 
 ### Added
 - `skills/` directory with 7 focused skill domains (split from monolithic SKILL.md)
@@ -64,15 +88,15 @@ Major restructure into a full Claude Code plugin with multi-component architectu
   - `/triage` — quick 7-Question Gate
   - `/web3-audit` — smart contract audit
 - `agents/` directory with 5 specialized agents
-  - `recon-agent` — runs recon pipeline, uses claude-haiku-4-5 for speed
-  - `report-writer` — generates reports, uses claude-opus-4-6 for quality
-  - `validator` — validates findings, uses claude-sonnet-4-6
-  - `web3-auditor` — audits contracts, uses claude-sonnet-4-6
-  - `chain-builder` — builds exploit chains, uses claude-sonnet-4-6
+  - `recon-agent` — runs recon pipeline, optimized for fast execution
+  - `report-writer` — generates submission-ready reports with quality focus
+  - `validator` — validates findings with gate-based triage
+  - `web3-auditor` — audits contracts using the web3 bug-class checklist
+  - `chain-builder` — builds exploit chains from low/medium findings
 - `hooks/hooks.json` — session start/stop hooks with hunt reminders
 - `rules/hunting.md` — 17 critical hunting rules (always active)
 - `rules/reporting.md` — 12 report quality rules (always active)
-- `CLAUDE.md` — plugin overview and quick-start guide
+- `CLAUDE.md` — compatibility guide (Codex-first usage)
 - `install.sh` — one-command skill installation
 
 ### Content Added to Skills
