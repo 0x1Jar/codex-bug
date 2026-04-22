@@ -1,6 +1,6 @@
 ---
 name: report-writing
-description: Bug bounty report writing for H1/Bugcrowd/Intigriti/Immunefi — report templates, human tone guidelines, impact-first writing, CVSS 3.1 scoring, title formula, impact statement formula, severity decision guide, downgrade counters, pre-submit checklist. Use after validating a finding and before submitting. Never use "could potentially" — prove it or don't report.
+description: Bug bounty report writing for H1/Bugcrowd/Intigriti/YesWeHack/Immunefi — report templates, human tone guidelines, impact-first writing, CVSS 3.1 scoring, title formula, impact statement formula, severity decision guide, downgrade counters, pre-submit checklist. Use after validating a finding and before submitting. Never use "could potentially" — prove it or don't report.
 ---
 
 # REPORT WRITING
@@ -222,6 +222,62 @@ CVSS 3.1 Score: X.X ([Severity]) — AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N
 - CVSS 3.1 is standard (CVSS 4.0 also accepted on newer programs)
 - PoC video is valued much more than screenshot alone — record with Loom
 - Safe harbor: Intigriti enforces it, be comfortable going slightly aggressive with testing
+
+---
+
+## YESWEHACK REPORT TEMPLATE
+
+```markdown
+# [Bug Class] — [Short impact title]
+
+## Summary
+
+[One short paragraph: vulnerable feature, attacker profile, and concrete impact.]
+
+## Prerequisites
+
+- Attacker account type: [guest / standard user]
+- Victim requirement: [none / second account]
+- Target asset: [exact in-scope hostname or app]
+
+## Steps to Reproduce
+
+1. [Exact step]
+2. Send request:
+
+\```http
+METHOD /endpoint HTTP/1.1
+Host: target.com
+Authorization: Bearer ATTACKER_TOKEN
+\```
+
+3. Observe response / state change:
+
+\```json
+{"email":"victim@target.com","role":"admin"}
+\```
+
+## Impact
+
+[Quantified impact: affected users/data/actions, exploitation effort, automation feasibility.]
+
+CVSS 3.1: X.X — AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N
+
+## Remediation
+
+[Concrete fix with ownership/authorization validation and server-side enforcement.]
+
+## Attachments
+
+- [Screenshot]
+- [Short PoC video]
+- [Raw request/response export]
+```
+
+**YesWeHack-specific notes:**
+- Be explicit about scope asset naming exactly as listed in policy.
+- Keep steps concise, deterministic, and reproducible by triage quickly.
+- Prefer concrete proof over long theory; include one minimal working PoC path.
 
 ---
 

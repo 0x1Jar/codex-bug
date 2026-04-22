@@ -1,5 +1,5 @@
 ---
-description: Write a submission-ready bug bounty report. Generates H1/Bugcrowd/Intigriti/Immunefi format with CVSS 3.1 score, proof of concept, impact statement, and remediation. Run /validate first. Usage: /report
+description: Write a submission-ready bug bounty report. Generates H1/Bugcrowd/Intigriti/YesWeHack/Immunefi format with CVSS 3.1 score, proof of concept, impact statement, and remediation. Run /validate first. Usage: /report
 ---
 
 # /report
@@ -19,7 +19,7 @@ Never write a report before validating. N/A submissions hurt your validity ratio
 ```
 
 Provide when prompted:
-- Platform (HackerOne / Bugcrowd / Intigriti / Immunefi)
+- Platform (HackerOne / Bugcrowd / Intigriti / YesWeHack / Immunefi)
 - Bug class
 - Affected endpoint
 - Your two test accounts and their IDs
@@ -54,6 +54,13 @@ Provide when prompted:
 - CVSS score prominent at top
 - Clear reproduction steps
 - Business impact focused
+
+### YesWeHack Format
+- Keep the report concise and reproducible (triager-first flow)
+- Include: Summary, Prerequisites, Steps to Reproduce, Impact, Remediation
+- Explicitly state attacker profile (unauthenticated / authenticated low-priv)
+- Add clear evidence blocks (HTTP requests/responses, screenshots, short PoC)
+- Mention scope asset exactly as listed in program policy
 
 ### Immunefi Format (Web3)
 - Root cause in Solidity code
