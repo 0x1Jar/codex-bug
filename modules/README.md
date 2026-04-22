@@ -8,4 +8,5 @@ Canonical runtime code lives here.
 - `reporting`: validation and report generation.
 - `support`: shared helper utilities.
 
-Root scripts are compatibility wrappers that forward to these modules.
+Use `modules/*` scripts as the default execution path.
+Root scripts are thin compatibility wrappers only.

@@ -5,8 +5,9 @@ This document explains the simplified final structure.
 ## Principles
 
 - Domain-based: code is grouped by operational domain.
-- Clean root: root is reserved for metadata, docs, installer, and compatibility wrappers.
-- Strict compatibility: legacy commands remain available through wrappers.
+- Latest-first execution: canonical runtime scripts live in `modules/*`.
+- Clean root: root is reserved for metadata, docs, installer, and thin compatibility wrappers.
+- Backward compatibility: legacy commands remain available through wrappers when needed.
 
 ## Main Folders
 
@@ -18,7 +19,7 @@ This document explains the simplified final structure.
 
 ## Compatibility Wrappers
 
-Root wrappers are kept for legacy public entrypoints, for example:
+Root wrappers are provided only for legacy public entrypoints, for example:
 - `hunt.py` -> `modules/orchestrator/hunt.py`
 - `recon_engine.sh` -> `modules/recon/recon_engine.sh`
 - `vuln_scanner.sh` -> `modules/scanners/vuln_scanner.sh`
