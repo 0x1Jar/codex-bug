@@ -8,6 +8,7 @@ targets/
 config.json
 *.burp
 *.json.bak
+*.cdx.json
 
 # API keys and tokens
 .env
@@ -32,3 +33,7 @@ venv/
 # Tool output
 *.out
 nmap-output/
+
+#file
+*.pdf
+*.xlsx
