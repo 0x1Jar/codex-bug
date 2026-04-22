@@ -41,15 +41,15 @@ codex
 # /report
 ```
 
-## Direct Runtime Commands
+## Direct Runtime Commands (Latest / Canonical)
 
 ```bash
-python3 hunt.py --status
-python3 hunt.py --target example.com --quick
-./recon_engine.sh example.com
-./vuln_scanner.sh recon/example.com
-python3 validate.py
-python3 report_generator.py findings/example.com
+python3 modules/orchestrator/hunt.py --status
+python3 modules/orchestrator/hunt.py --target example.com --quick
+bash modules/recon/recon_engine.sh example.com
+bash modules/scanners/vuln_scanner.sh recon/example.com
+python3 modules/reporting/validate.py
+python3 modules/reporting/report_generator.py findings/example.com
 ```
 
 ## Project Layout
@@ -81,26 +81,9 @@ Detailed structure reference: `docs/project-structure.md`.
 - `modules/reporting/validate.py`
 - `modules/reporting/report_generator.py`
 
-## Root Compatibility Wrappers
+## Compatibility Note
 
-Primary wrappers kept for day-to-day workflows:
-
-- `hunt.py`
-- `recon_engine.sh`
-- `vuln_scanner.sh`
-- `validate.py`
-- `report_generator.py`
-
-Additional wrappers available:
-
-- `target_selector.py`
-- `learn.py`
-- `mindmap.py`
-- `cve_hunter.py`
-- `zero_day_fuzzer.py`
-- `h1_run.sh`
-
-All wrappers forward execution to canonical scripts in `modules/*`.
+Root wrappers are still available for backward compatibility, but the recommended path is to use canonical scripts under `modules/*`.
 
 ## Skills, Commands, Agents
 
