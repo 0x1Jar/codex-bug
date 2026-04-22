@@ -1,7 +1,7 @@
 # Codex Bug Bounty Toolkit (Codex-First)
 
-Toolkit ini sekarang memakai struktur **modules-first** supaya lebih mudah dibaca, dirawat, dan di-scale.
-Kompatibilitas command lama tetap hidup lewat wrapper di root (strict compatibility).
+This toolkit now uses a **modules-first** structure to improve readability, maintainability, and scalability.
+Legacy command compatibility is preserved through root-level wrappers (strict compatibility).
 
 ## Quick Start
 
@@ -13,7 +13,7 @@ python3 validate.py --help
 python3 report_generator.py --help
 ```
 
-## Instalasi
+## Installation
 
 ```bash
 ./install.sh --target codex
@@ -22,29 +22,29 @@ python3 report_generator.py --help
 ./install.sh --dry-run --target both
 ```
 
-Flag utama:
+Primary flags:
 - `--target codex|claude|both`
 - `--dry-run`
 - `--force`
 
-## Struktur Proyek (Sederhana)
+## Project Structure (Simple)
 
 ```text
 .
 ├── modules/
-│   ├── orchestrator/   # alur utama (hunt, selector, learning)
+│   ├── orchestrator/   # main workflow (hunt, selector, learning)
 │   ├── recon/          # recon engine + probe
 │   ├── scanners/       # scanner/fuzzer/testing
 │   ├── reporting/      # validator + report generator
-│   └── support/        # helper non-domain
+│   └── support/        # shared non-domain helpers
 ├── commands/           # cheatsheet prompt/command
 ├── skills/             # skill definitions
-├── docs/               # dokumentasi
-├── install.sh          # installer resmi lintas platform
-└── <root wrappers>     # kompatibilitas command lama
+├── docs/               # documentation
+├── install.sh          # cross-platform installer
+└── <root wrappers>     # legacy command compatibility
 ```
 
-Detail struktur: `docs/project-structure.md`
+Structure details: `docs/project-structure.md`
 
 ## Entry Point Canonical
 
@@ -54,16 +54,16 @@ Detail struktur: `docs/project-structure.md`
 - `modules/reporting/validate.py`
 - `modules/reporting/report_generator.py`
 
-## Kompatibilitas Lama (No Breaking)
+## Legacy Compatibility (No Breaking Changes)
 
-Command lama tetap valid:
+Legacy commands remain valid:
 - `python3 hunt.py`
 - `./recon_engine.sh`
 - `./vuln_scanner.sh`
 - `python3 validate.py`
 - `python3 report_generator.py`
 
-Root file di atas sekarang berperan sebagai wrapper tipis ke `modules/*`.
+The root files above now act as thin wrappers that forward to `modules/*`.
 
 ## Smoke Check
 
@@ -72,7 +72,7 @@ Root file di atas sekarang berperan sebagai wrapper tipis ke `modules/*`.
 ./scripts/audit_runtime_paths.sh
 ```
 
-## Catatan
+## Notes
 
-- Fokus v1 migrasi: keterbacaan + stabilitas path/runtime.
-- Fitur inti tidak diubah secara fungsional.
+- v1 migration focus: readability and path/runtime stability.
+- Core functionality is unchanged.

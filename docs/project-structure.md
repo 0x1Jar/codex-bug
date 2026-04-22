@@ -1,40 +1,40 @@
 # Project Structure (Codex-First)
 
-Dokumen ini menjelaskan struktur final yang disederhanakan.
+This document explains the simplified final structure.
 
-## Prinsip
+## Principles
 
-- Domain-based: kode dikelompokkan per domain kerja.
-- Root clean: root dipakai untuk metadata, docs, installer, dan wrapper kompatibilitas.
-- Strict compatibility: command lama tetap hidup via wrapper.
+- Domain-based: code is grouped by operational domain.
+- Clean root: root is reserved for metadata, docs, installer, and compatibility wrappers.
+- Strict compatibility: legacy commands remain available through wrappers.
 
-## Folder Utama
+## Main Folders
 
 - `modules/orchestrator`: orchestrator pipeline, target selection, learning, mindmap.
-- `modules/recon`: pipeline recon dan probe.
-- `modules/scanners`: scanner, fuzzer, dan script uji.
-- `modules/reporting`: validasi dan generasi report.
-- `modules/support`: helper non-domain (reservasi untuk util bersama).
+- `modules/recon`: recon pipeline and probing scripts.
+- `modules/scanners`: scanner, fuzzer, and testing scripts.
+- `modules/reporting`: validation and report generation.
+- `modules/support`: shared non-domain helpers.
 
-## Wrapper Kompatibilitas
+## Compatibility Wrappers
 
-Root wrapper dipertahankan untuk entrypoint publik lama, misalnya:
+Root wrappers are kept for legacy public entrypoints, for example:
 - `hunt.py` -> `modules/orchestrator/hunt.py`
 - `recon_engine.sh` -> `modules/recon/recon_engine.sh`
 - `vuln_scanner.sh` -> `modules/scanners/vuln_scanner.sh`
 - `validate.py` -> `modules/reporting/validate.py`
 - `report_generator.py` -> `modules/reporting/report_generator.py`
 
-Wrapper hanya forward argumen + exit code, tanpa logic bisnis.
+Wrappers only forward arguments and exit codes, without business logic.
 
 ## Runtime Path Policy
 
-- Script canonical di `modules/*` wajib bisa dijalankan dari cwd mana pun.
-- Resolver path memprioritaskan layout baru (`modules/*`).
-- Layout legacy `tools/` tetap didukung sebagai fallback.
+- Canonical scripts in `modules/*` must run from any cwd.
+- Path resolution prioritizes the new layout (`modules/*`).
+- Legacy `tools/` layout remains supported as fallback.
 
-## Operasional
+## Operations
 
-- Installer resmi: `install.sh`
+- Official installer: `install.sh`
 - Smoke test: `scripts/smoke_codex_support.sh`
 - Audit hardcoded path: `scripts/audit_runtime_paths.sh`
