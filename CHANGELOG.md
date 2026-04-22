@@ -96,7 +96,7 @@ Major restructure into a full Codex plugin with multi-component architecture.
 - `hooks/hooks.json` — session start/stop hooks with hunt reminders
 - `rules/hunting.md` — 17 critical hunting rules (always active)
 - `rules/reporting.md` — 12 report quality rules (always active)
-- `CLAUDE.md` — compatibility guide (Codex-first usage)
+- `CODEX.md` — compatibility guide (Codex-first usage)
 - `install.sh` — one-command skill installation
 
 ### Content Added to Skills
