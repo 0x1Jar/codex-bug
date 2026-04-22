@@ -52,16 +52,24 @@ Structure details: `docs/project-structure.md`
 - `modules/reporting/validate.py`
 - `modules/reporting/report_generator.py`
 
-## Legacy Compatibility (No Breaking Changes)
+## Root Entry Points (Compatibility Wrappers)
 
-Legacy commands remain valid:
+Primary wrappers kept for stable workflows:
 - `python3 hunt.py`
 - `./recon_engine.sh`
 - `./vuln_scanner.sh`
 - `python3 validate.py`
 - `python3 report_generator.py`
 
-The root files above now act as thin wrappers that forward to `modules/*`.
+Additional wrappers available:
+- `python3 target_selector.py`
+- `python3 learn.py`
+- `python3 mindmap.py`
+- `python3 cve_hunter.py`
+- `python3 zero_day_fuzzer.py`
+- `./h1_run.sh`
+
+All root scripts above are thin wrappers that forward execution to canonical files under `modules/*`.
 
 ## Smoke Check
 
