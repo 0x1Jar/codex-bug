@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/codex-bug-bounty-logo.svg" alt="Codex Bug Bounty Logo" width="760" />
+<img src="assets/image.png" alt="Codex Bug Bounty Logo" width="760" />
 
 # Codex Bug Bounty
 
