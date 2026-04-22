@@ -164,7 +164,16 @@ def get_curated_programs():
     ]
 
 
-def score_program(prog):
+def count_eligible_bounty_assets(prog):
+    """Count in-scope assets explicitly marked eligible for bounty."""
+    count = 0
+    for asset in prog.get("assets", []):
+        if isinstance(asset, dict) and asset.get("eligible_for_bounty"):
+            count += 1
+    return count
+
+
+def score_program(prog, prefer_large_scope=False):
     """Score a program for targeting priority (higher = better)."""
     score = 0
 
@@ -181,6 +190,30 @@ def score_program(prog):
     # More assets = more attack surface
     asset_count = len(prog.get("assets", []))
     score += min(asset_count * 2, 20)
+
+    eligible_asset_count = count_eligible_bounty_assets(prog)
+    if eligible_asset_count >= 20:
+        score += 10
+    elif eligible_asset_count >= 5:
+        score += 5
+
+    # Optional mode for users who want the widest scope programs first.
+    if prefer_large_scope:
+        if asset_count >= 100:
+            score += 35
+        elif asset_count >= 60:
+            score += 25
+        elif asset_count >= 30:
+            score += 15
+        elif asset_count >= 15:
+            score += 8
+
+        if eligible_asset_count >= 50:
+            score += 15
+        elif eligible_asset_count >= 20:
+            score += 10
+        elif eligible_asset_count >= 10:
+            score += 5
 
     # Higher bounties are better
     bounty_max = prog.get("bounty_max", 0)
@@ -250,13 +283,17 @@ def extract_scope_domains(prog):
     return domains
 
 
-def select_targets(programs, top_n=10):
+def select_targets(programs, top_n=10, prefer_large_scope=False):
     """Score and rank programs, return top N."""
     print(f"\n[*] Scoring {len(programs)} programs...")
+    if prefer_large_scope:
+        print("    [*] Selection mode: prefer programs with many in-scope assets")
 
     scored = []
     for prog in programs:
-        prog["score"] = score_program(prog)
+        prog["asset_count"] = len(prog.get("assets", []))
+        prog["eligible_bounty_asset_count"] = count_eligible_bounty_assets(prog)
+        prog["score"] = score_program(prog, prefer_large_scope=prefer_large_scope)
         prog["scope_domains"] = extract_scope_domains(prog)
         scored.append(prog)
 
@@ -276,7 +313,8 @@ def select_targets(programs, top_n=10):
         print(f"      URL: {prog['url']}")
         print(f"      Wildcard: {'Yes' if prog['has_wildcard'] else 'No'} | "
               f"Bounty: ${prog.get('bounty_min', '?')}-${prog.get('bounty_max', '?')} | "
-              f"Assets: {len(prog.get('assets', []))}")
+              f"Assets: {prog.get('asset_count', len(prog.get('assets', [])))} | "
+              f"Eligible: {prog.get('eligible_bounty_asset_count', 0)}")
         if domain_str:
             print(f"      Domains: {domain_str}")
         print()
@@ -284,12 +322,13 @@ def select_targets(programs, top_n=10):
     return selected
 
 
-def save_targets(targets, output_file):
+def save_targets(targets, output_file, selection_profile="balanced"):
     """Save selected targets to JSON."""
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
 
     output = {
         "generated_at": datetime.now().isoformat(),
+        "selection_profile": selection_profile,
         "total_targets": len(targets),
         "targets": targets,
         "scope_checklist": [
@@ -313,6 +352,11 @@ def main():
     parser = argparse.ArgumentParser(description="HackerOne Target Selector")
     parser.add_argument("--top", type=int, default=10, help="Number of top targets to select")
     parser.add_argument("--output", type=str, default=DEFAULT_OUTPUT, help="Output JSON file")
+    parser.add_argument(
+        "--prefer-large-scope",
+        action="store_true",
+        help="Prioritize programs with many in-scope assets and larger attack surface"
+    )
     args = parser.parse_args()
 
     print("=============================================")
@@ -324,8 +368,12 @@ def main():
         print("[-] No programs found. Check your internet connection.")
         sys.exit(1)
 
-    selected = select_targets(programs, top_n=args.top)
-    save_targets(selected, args.output)
+    selected = select_targets(programs, top_n=args.top, prefer_large_scope=args.prefer_large_scope)
+    save_targets(
+        selected,
+        args.output,
+        selection_profile="large_scope" if args.prefer_large_scope else "balanced"
+    )
 
     print("\n=============================================")
     print("  IMPORTANT: Scope Checklist")
