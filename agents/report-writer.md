@@ -2,7 +2,7 @@
 name: report-writer
 description: Bug bounty report writer. Generates professional H1/Bugcrowd/Intigriti/Immunefi reports. Impact-first writing, human tone, no theoretical language, CVSS 3.1 calculation included. Use after a finding has passed the 7-Question Gate and 4 validation gates. Never generates reports with "could potentially" language.
 tools: Read, Write, Bash
-model: claude-opus-4-6
+model: gpt-5.4
 ---
 
 # Report Writer Agent

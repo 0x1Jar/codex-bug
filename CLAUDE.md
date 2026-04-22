@@ -1,10 +1,42 @@
-# Claude Bug Bounty — Plugin Guide
+# Codex Bug Bounty — Compatibility Guide
 
-This repo is a Claude Code plugin for professional bug bounty hunting across HackerOne, Bugcrowd, Intigriti, and Immunefi.
+This repo is now **Codex-first** for professional bug bounty hunting across HackerOne, Bugcrowd, Intigriti, and Immunefi, while keeping Claude compatibility.
+
+## Primary Mode (Codex)
+
+Use skills-first flow in Codex:
+
+```bash
+codex
+# /recon target.com
+# /hunt target.com
+# /validate
+# /report
+```
+
+Install to Codex paths:
+
+```bash
+./install.sh --target codex
+```
+
+## Claude Fallback
+
+Claude users are still supported:
+
+```bash
+./install.sh --target claude
+```
+
+or install both:
+
+```bash
+./install.sh --target both
+```
 
 ## What's Here
 
-### Skills (7 domains — load with `/bug-bounty`, `/web2-recon`, etc.)
+### Skills (7 domains)
 
 | Skill | Domain |
 |---|---|
@@ -16,7 +48,7 @@ This repo is a Claude Code plugin for professional bug bounty hunting across Hac
 | `skills/report-writing/` | H1/Bugcrowd/Intigriti/Immunefi report templates, CVSS 3.1, human tone |
 | `skills/triage-validation/` | 7-Question Gate, 4 gates, never-submit list, conditionally valid table |
 
-### Commands (8 slash commands)
+### Commands (Cheatsheet Prompts)
 
 | Command | Usage |
 |---|---|
@@ -29,7 +61,7 @@ This repo is a Claude Code plugin for professional bug bounty hunting across Hac
 | `/triage` | `/triage` — quick 7-Question Gate |
 | `/web3-audit` | `/web3-audit <contract.sol>` — smart contract audit |
 
-### Agents (5 specialized agents)
+### Agents (Templates)
 
 - `recon-agent` — subdomain enum + live host discovery
 - `report-writer` — generates H1/Bugcrowd/Immunefi reports
@@ -51,23 +83,7 @@ Located in repo root:
 - `report_generator.py` — report writer
 - `learn.py` — CVE + disclosure intel
 
-## Start Here
-
-```bash
-claude
-# /recon target.com
-# /hunt target.com
-# /validate   (after finding something)
-# /report     (after validation passes)
-```
-
-## Install Skills
-
-```bash
-chmod +x install.sh && ./install.sh
-```
-
-## Critical Rules (Always Active)
+## Critical Rules
 
 1. READ FULL SCOPE before touching any asset
 2. NEVER hunt theoretical bugs — "Can attacker do this RIGHT NOW?"

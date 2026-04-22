@@ -1,0 +1,36 @@
+{
+  "name": "codex-bug-bounty",
+  "version": "2.1.0",
+  "description": "Codex-first bug bounty workflow plugin for Web2/Web3 reconnaissance, validation, and reporting.",
+  "author": {
+    "name": "shuvonsec",
+    "url": "https://github.com/shuvonsec"
+  },
+  "homepage": "https://github.com/shuvonsec/claude-bug-bounty",
+  "repository": "https://github.com/shuvonsec/claude-bug-bounty",
+  "license": "MIT",
+  "keywords": [
+    "bug-bounty",
+    "security-testing",
+    "recon",
+    "vulnerability-research",
+    "web3-audit"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Codex Bug Bounty",
+    "shortDescription": "Codex-first recon-to-report bug bounty workflow",
+    "longDescription": "Run a full bug bounty workflow in Codex: recon, target prioritization, active hunting, validation gates, and report-ready outputs with Web2 and Web3 coverage.",
+    "developerName": "shuvonsec",
+    "category": "Security",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/shuvonsec/claude-bug-bounty",
+    "defaultPrompt": [
+      "Run a Codex-first bug bounty workflow from recon to report"
+    ],
+    "brandColor": "#0B5FFF"
+  }
+}

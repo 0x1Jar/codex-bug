@@ -2,7 +2,7 @@
 name: validator
 description: Finding validator. Runs the 7-Question Gate and 4-gate checklist on a described finding. Kills weak/theoretical findings fast before report writing. Prevents N/A submissions. Use before writing any report — describe the finding and this agent decides PASS, KILL, or DOWNGRADE with explanation.
 tools: Read, Bash, WebFetch
-model: claude-sonnet-4-6
+model: gpt-5.4
 ---
 
 # Validator Agent

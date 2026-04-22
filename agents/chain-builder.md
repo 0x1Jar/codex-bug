@@ -2,7 +2,7 @@
 name: chain-builder
 description: Exploit chain builder. Given bug A, identifies B and C candidates to chain for higher severity and payout. Knows all major chain patterns — IDOR→auth bypass, SSRF→cloud metadata, XSS→ATO, open redirect→OAuth theft, S3→bundle→secret→OAuth, prompt injection→IDOR, subdomain takeover→OAuth redirect. Use when you have a low/medium finding that needs a chain to be submittable.
 tools: Read, Bash, WebFetch
-model: claude-sonnet-4-6
+model: gpt-5.4
 ---
 
 # Chain Builder Agent
