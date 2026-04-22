@@ -108,7 +108,7 @@ def resolve_tool_path(name):
 
 def check_tools():
     """Check which tools are installed."""
-    tools = ["subfinder", "httpx", "nuclei", "ffuf", "nmap", "amass", "gau", "dalfox", "subjack"]
+    tools = ["subfinder", "assetfinder", "httpx", "nuclei", "ffuf", "nmap", "gau", "dalfox", "subjack"]
     installed = []
     missing = []
 

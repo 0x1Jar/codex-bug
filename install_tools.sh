@@ -39,7 +39,6 @@ BREW_TOOLS=(
     "httpx"
     "nuclei"
     "ffuf"
-    "amass"
 )
 
 echo ""
@@ -62,12 +61,14 @@ echo ""
 echo "[*] Installing tools via Go..."
 
 GO_TOOLS=(
+    "github.com/tomnomnom/assetfinder@latest"
     "github.com/lc/gau/v2/cmd/gau@latest"
     "github.com/hahwul/dalfox/v2@latest"
     "github.com/haccer/subjack@latest"
 )
 
 GO_TOOL_NAMES=(
+    "assetfinder"
     "gau"
     "dalfox"
     "subjack"
@@ -110,7 +111,7 @@ echo "============================================="
 echo "[*] Installation Verification"
 echo "============================================="
 
-ALL_TOOLS=(subfinder httpx nuclei ffuf nmap amass gau dalfox subjack)
+ALL_TOOLS=(subfinder httpx nuclei ffuf nmap assetfinder gau dalfox subjack)
 INSTALLED=0
 MISSING=0
 

@@ -122,9 +122,9 @@ else
     warn "subfinder not found — skipping"
 fi
 
-if [ "$(check_tool amass)" = true ] && [ "$QUICK" = false ]; then
-    amass enum -passive -d "$TARGET" -o "$OUT/subdomains/amass.txt" 2>/dev/null
-    ok "Amass: $(wc -l < $OUT/subdomains/amass.txt 2>/dev/null || echo 0) subdomains"
+if [ "$(check_tool assetfinder)" = true ]; then
+    assetfinder --subs-only "$TARGET" 2>/dev/null | grep -E "\\.${TARGET}$" | sort -u > "$OUT/subdomains/assetfinder.txt"
+    ok "Assetfinder: $(wc -l < $OUT/subdomains/assetfinder.txt 2>/dev/null || echo 0) subdomains"
 fi
 
 # crt.sh query

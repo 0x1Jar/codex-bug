@@ -1,6 +1,8 @@
 # Sensitive output — never commit these
 findings/
 recon/
+!modules/recon/
+!modules/recon/**
 reports/
 targets/
 config.json

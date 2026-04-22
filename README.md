@@ -41,6 +41,60 @@ codex
 # /report
 ```
 
+## Beginner API Setup (Recommended)
+
+This is the safest and most consistent setup with the current project runtime.
+
+### 1) Prepare config file
+
+```bash
+cd /path/to/codex-bug
+cp config.example.json config.json
+```
+
+Then fill your keys in `config.json` (or use `config.example.json` as reference).
+
+### 2) Set Chaos API key via environment variable
+
+```bash
+export CHAOS_API_KEY="your_chaos_api_key"
+```
+
+To make it persistent on macOS/zsh:
+
+```bash
+echo 'export CHAOS_API_KEY="your_chaos_api_key"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+### 3) For HackerOne, use CLI token arguments
+
+Most HackerOne-focused scripts currently use explicit token arguments (not automatic `config.json` loading):
+
+```bash
+python3 modules/scanners/h1_idor_scanner.py --token-a "TOKEN_A" --token-b "TOKEN_B" --report-id 123456
+python3 modules/scanners/h1_race.py --token-a "TOKEN_A" --test 2fa
+python3 modules/scanners/h1_oauth_tester.py --token-a "TOKEN_A" --all
+python3 modules/recon/hai_probe.py --api-name "H1_USERNAME" --token "H1_API_TOKEN"
+```
+
+### 4) Special case: `h1_run.sh`
+
+For `modules/orchestrator/h1_run.sh`, tokens are still set manually inside the file:
+
+```bash
+TOKEN_A=""
+TOKEN_B=""
+```
+
+### Important note
+
+The current runtime is not fully auto-wired to read `config.json` for every script.
+
+Most reliable practice today:
+- `CHAOS_API_KEY` via environment variable
+- HackerOne tokens via CLI arguments (or manual assignment in `h1_run.sh`)
+
 ## Direct Runtime Commands (Latest / Canonical)
 
 ```bash
@@ -51,6 +105,37 @@ bash modules/scanners/vuln_scanner.sh recon/example.com
 python3 modules/reporting/validate.py
 python3 modules/reporting/report_generator.py findings/example.com
 ```
+
+## Tools Used
+
+### Core external tools (actively used by runtime scripts)
+
+- `subfinder` — passive subdomain enumeration
+- `assetfinder` — passive subdomain expansion
+- `httpx` — live host probing + tech fingerprinting
+- `nuclei` — template-based vulnerability scanning
+- `ffuf` — directory and endpoint fuzzing
+- `nmap` — open port and service detection
+- `gau` — historical URL collection
+- `dalfox` — XSS scanning
+- `subjack` — subdomain takeover checks
+
+### Base system/runtime requirements
+
+- `python3`
+- `bash`
+- `curl`
+- standard Unix utilities: `grep`, `sed`, `awk`, `sort`, `timeout`
+
+### Installer helper
+
+You can install the main scanning stack with:
+
+```bash
+./install_tools.sh
+```
+
+This installer covers the primary tools above (`subfinder`, `httpx`, `nuclei`, `ffuf`, `nmap`, `assetfinder`, `gau`, `dalfox`, `subjack`).
 
 ## Project Layout
 
