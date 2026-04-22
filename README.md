@@ -17,13 +17,11 @@ python3 report_generator.py --help
 
 ```bash
 ./install.sh --target codex
-./install.sh --target claude
-./install.sh --target both
-./install.sh --dry-run --target both
+./install.sh --dry-run --target codex
 ```
 
 Primary flags:
-- `--target codex|claude|both`
+- `--target codex`
 - `--dry-run`
 - `--force`
 

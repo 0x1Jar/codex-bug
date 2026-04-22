@@ -1203,7 +1203,7 @@ When payout is being downgraded, use these counters:
 
 ---
 
-# INSTALLATION (Codex-First, Claude Compatible)
+# INSTALLATION (Codex-First)
 
 Use the repo installer from project root:
 
@@ -1211,13 +1211,7 @@ Use the repo installer from project root:
 ./install.sh --target codex
 ```
 
-Claude fallback:
-
-```bash
-./install.sh --target claude
-```
-
-Install to both environments:
+Optional multi-target install:
 
 ```bash
 ./install.sh --target both

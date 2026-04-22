@@ -1,6 +1,6 @@
 # Codex Bug Bounty — Compatibility Guide
 
-This repo is now **Codex-first** for professional bug bounty hunting across HackerOne, Bugcrowd, Intigriti, and Immunefi, while keeping Claude compatibility.
+This repo is now **Codex-first** for professional bug bounty hunting across HackerOne, Bugcrowd, Intigriti, and Immunefi.
 
 ## Primary Mode (Codex)
 
@@ -20,15 +20,7 @@ Install to Codex paths:
 ./install.sh --target codex
 ```
 
-## Claude Fallback
-
-Claude users are still supported:
-
-```bash
-./install.sh --target claude
-```
-
-or install both:
+## Optional Multi-Target Install
 
 ```bash
 ./install.sh --target both
