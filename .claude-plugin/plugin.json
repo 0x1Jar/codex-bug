@@ -1,11 +1,11 @@
 {
-  "name": "codex-bug",
+  "name": "bountyforge",
   "description": "BountyForge bug bounty workflows for Claude Code: recon, validation, reporting, Web2, Web3, mobile, and AI security.",
   "version": "2.2.0",
   "author": {
     "name": "0x1Jar",
     "url": "https://github.com/0x1Jar"
   },
-  "homepage": "https://github.com/0x1Jar/codex-bug",
+  "homepage": "https://github.com/0x1Jar/BountyForge",
   "license": "MIT"
 }

@@ -19,6 +19,7 @@
 - `AGENTS.md` and `CLAUDE.md` are platform-specific entrypoints.
 - `hooks/hooks.json` now uses the current Claude Code hook shape.
 - README branding and quickstart now cover both Codex and Claude Code.
+- Repo and plugin naming now consistently use BountyForge.
 
 ## v2.1.0 — 20 Vuln Classes + Payload Expansion (Mar 2026)
 

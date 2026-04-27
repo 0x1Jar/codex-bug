@@ -5,7 +5,7 @@
   },
   "plugins": [
     {
-      "name": "codex-bug",
+      "name": "bountyforge",
       "source": {
         "source": "local",
         "path": "./"

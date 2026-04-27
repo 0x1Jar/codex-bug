@@ -8,7 +8,7 @@
   },
   "plugins": [
     {
-      "name": "codex-bug",
+      "name": "bountyforge",
       "source": "./",
       "description": "Bug bounty hunting workflows for Claude Code and Codex.",
       "version": "2.2.0"

@@ -8,7 +8,7 @@
 
 Web2, Web3, mobile, recon, validation, and report writing in one repo.
 
-<sub>Maintained at <a href="https://github.com/0x1Jar/codex-bug">0x1Jar/codex-bug</a></sub>
+<sub>Maintained at <a href="https://github.com/0x1Jar/BountyForge">0x1Jar/BountyForge</a></sub>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8+-3776AB.svg?style=flat-square&logo=python&logoColor=white)](https://python.org)
@@ -49,8 +49,8 @@ The repo is not just a script dump. The main value is the workflow knowledge in 
 ### 1. Clone
 
 ```bash
-git clone https://github.com/0x1Jar/codex-bug.git
-cd codex-bug
+git clone https://github.com/0x1Jar/BountyForge.git
+cd BountyForge
 ```
 
 ### 2. Install Agent Support
@@ -418,7 +418,7 @@ These folders are for local work output. Review `.gitignore` before committing g
 ## Project Map
 
 ```text
-codex-bug/
+BountyForge/
 ├── assets/image.png                 # README logo
 ├── AGENTS.md                        # Codex instructions
 ├── CLAUDE.md                        # Claude Code instructions
