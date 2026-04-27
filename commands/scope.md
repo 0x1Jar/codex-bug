@@ -1,5 +1,5 @@
 ---
-description: Check if a target asset is in scope for the program before hunting or submitting. Reads program scope page, checks asset against in-scope and out-of-scope lists, verifies the asset is owned by the target organization. Usage: /scope <asset>
+description: "Check if a target asset is in scope for the program before hunting or submitting. Reads program scope page, checks asset against in-scope and out-of-scope lists, verifies the asset is owned by the target organization. Usage: /scope <asset>"
 ---
 
 # /scope

@@ -1,22 +1,23 @@
 <div align="center">
 
-# Claude Bug Bounty
+# Codex Bug Bounty
 
-**The agent harness for professional bug bounty hunting. Web2 + Web3. Recon to report.**
+**Dual Codex + Claude Code harness for professional bug bounty hunting. Web2 + Web3. Recon to report.**
 
-<sub>by <a href="https://github.com/shuvonsec">shuvonsec</a></sub>
+<sub>maintained at <a href="https://github.com/0x1Jar/codex-bug">0x1Jar/codex-bug</a></sub>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8+-3776AB.svg?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![Shell](https://img.shields.io/badge/Shell-bash-4EAA25.svg?style=flat-square&logo=gnubash&logoColor=white)](https://www.gnu.org/software/bash/)
 [![Markdown](https://img.shields.io/badge/Docs-Markdown-083FA1.svg?style=flat-square&logo=markdown&logoColor=white)](https://commonmark.org)
-[![Claude Code Skill](https://img.shields.io/badge/Claude_Code-Plugin-D97706.svg?style=flat-square&logo=anthropic&logoColor=white)](https://claude.ai/claude-code)
+[![Codex Plugin](https://img.shields.io/badge/Codex-Plugin-10A37F.svg?style=flat-square&logo=openai&logoColor=white)](https://developers.openai.com/codex)
+[![Claude Code Plugin](https://img.shields.io/badge/Claude_Code-Plugin-D97706.svg?style=flat-square&logo=anthropic&logoColor=white)](https://claude.ai/claude-code)
 
-[Quick Start](#quick-start) &nbsp;&middot;&nbsp; [Architecture](#architecture) &nbsp;&middot;&nbsp; [Skills](#skills) &nbsp;&middot;&nbsp; [Commands](#commands) &nbsp;&middot;&nbsp; [Agents](#agents) &nbsp;&middot;&nbsp; [Tools](#tool-reference) &nbsp;&middot;&nbsp; [Rules](#rules)
+[Quick Start](#quick-start) &nbsp;&middot;&nbsp; [Dual Agent Support](docs/agent-support.md) &nbsp;&middot;&nbsp; [Architecture](#architecture) &nbsp;&middot;&nbsp; [Skills](#skills) &nbsp;&middot;&nbsp; [Commands](#commands) &nbsp;&middot;&nbsp; [Agents](#agents) &nbsp;&middot;&nbsp; [Tools](#tool-reference) &nbsp;&middot;&nbsp; [Rules](#rules)
 
 ---
 
-**7 skill domains &nbsp;|&nbsp; 8 slash commands &nbsp;|&nbsp; 5 agents &nbsp;|&nbsp; 20 web2 vuln classes &nbsp;|&nbsp; 10 web3 bug classes &nbsp;|&nbsp; battle-tested across HackerOne, Bugcrowd, Intigriti, Immunefi**
+**10 skill domains &nbsp;|&nbsp; 10 slash commands &nbsp;|&nbsp; 5 agents &nbsp;|&nbsp; 20 web2 vuln classes &nbsp;|&nbsp; 10 web3 bug classes &nbsp;|&nbsp; battle-tested across HackerOne, Bugcrowd, Intigriti, Immunefi**
 
 </div>
 
@@ -24,9 +25,18 @@
 
 ## What's New
 
+### v2.2.0 - Dual Codex + Claude Code Support (Apr 2026)
+
+This release makes the repo a real dual-agent plugin:
+
+- Codex support: `AGENTS.md`, `.codex-plugin/plugin.json`, `.agents/plugins/marketplace.json`, `.codex/agents/`, and optional non-blocking Codex hooks.
+- Claude Code support: `CLAUDE.md`, `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, root plugin components, and current hook config shape.
+- One installer: `./install.sh --codex`, `./install.sh --claude`, or `./install.sh --all`.
+- Shared docs: see [`docs/agent-support.md`](docs/agent-support.md) for platform-specific setup.
+
 ### v2.0.0 — ECC-Style Plugin Architecture (Mar 2026)
 
-This release restructures the entire repo from a monolithic skill file into a full **Claude Code plugin** modeled after the `everything-claude-code` architecture — with modular skills, slash commands, specialized agents, hooks, and rules.
+This release restructures the entire repo from a monolithic skill file into a full agent plugin architecture — with modular skills, slash commands, specialized agents, hooks, and rules.
 
 **Skills (7 focused domains)**
 - `skills/bug-bounty/` — Master workflow skill (1,200+ lines, recon → report, all vuln classes, LLM testing, bypass tables, A→B chains)
@@ -65,13 +75,13 @@ This release restructures the entire repo from a monolithic skill file into a fu
 
 Most bug bounty toolkits give you a bag of scripts. This one gives you an **agent harness that reasons about what to test, validates what you find, and writes reports that pay.**
 
-Claude reads your recon output, maps it to the highest-ROI attack surface, drives 25+ tools in the right order, kills weak findings before you waste time writing them up, and generates submission-ready reports — all from a conversation.
+Codex or Claude Code reads your recon output, maps it to the highest-ROI attack surface, drives 25+ tools in the right order, kills weak findings before you waste time writing them up, and generates submission-ready reports — all from a conversation.
 
 ### Why this beats scattered scripts
 
 | Problem with scripts | How this solves it |
 |:---|:---|
-| No methodology — just commands | 7 skill domains with battle-tested hunting workflow |
+| No methodology — just commands | 10 skill domains with battle-tested hunting workflow |
 | False positives waste hours | 7-Question Gate + 4 gates kill weak findings in 30 seconds |
 | Reports get downgraded | Report-writer agent with escalation language, CVSS, title formula |
 | Duplicate submissions | Built-in dedup check as part of validation gates |
@@ -81,39 +91,44 @@ Claude reads your recon output, maps it to the highest-ROI attack surface, drive
 
 ---
 
-## The Trilogy
-
-| Repo | Purpose |
-|:---|:---|
-| **[claude-bug-bounty](https://github.com/shuvonsec/claude-bug-bounty)** | Full hunting pipeline — recon, scanning, validation, reporting |
-| **[web3-bug-bounty-hunting-ai-skills](https://github.com/shuvonsec/web3-bug-bounty-hunting-ai-skills)** | Smart contract security — 10 bug classes, Foundry PoCs, Immunefi case studies |
-| **[public-skills-builder](https://github.com/shuvonsec/public-skills-builder)** | Ingest 500+ public writeups and generate Claude skill files |
-
-`public-skills-builder` generates knowledge → `claude-bug-bounty` runs the hunt → `web3-bug-bounty-hunting-ai-skills` goes deeper on DeFi.
-
----
-
 ## Quick Start
 
-**1. Clone and install skills**
+**1. Clone and install agent support**
 
 ```bash
-git clone https://github.com/shuvonsec/claude-bug-bounty.git
-cd claude-bug-bounty
+git clone https://github.com/0x1Jar/codex-bug.git
+cd codex-bug
 chmod +x install.sh && ./install.sh
 ```
 
-**2. Start hunting**
+**2. Use with Codex**
+
+Codex uses `AGENTS.md`, installed skills, `.codex/agents/`, and the local plugin metadata.
 
 ```bash
-claude
+codex
+# $web2-recon target.com
+# $mobile-static app.apk
+# $mobile-dynamic com.target.app
+# $triage-validation validate this finding before report writing
+# $report-writing draft a report from confirmed evidence
+```
+
+**3. Use with Claude Code**
+
+Claude Code uses `CLAUDE.md`, plugin components, slash commands, agents, and hooks.
+
+```bash
+claude --plugin-dir .
 # /recon target.com        — full asset discovery
 # /hunt target.com         — active vuln testing
+# /mobile-static app.apk   — offline APK/IPA/source review
+# /mobile-dynamic com.app  — runtime device/emulator testing
 # /validate                — check your finding before writing
 # /report                  — generate submission-ready report
 ```
 
-**3. Or run tools directly**
+**4. Or run tools directly**
 
 ```bash
 python3 hunt.py --target hackerone.com          # Full automated hunt
@@ -144,13 +159,13 @@ Target ──▶ Recon ──▶ Learn ──▶ Hunt ──▶ Validate ──�
                 nuclei (known CVEs)
 ```
 
-Each stage feeds the next. Claude orchestrates the entire flow, or you can run any stage independently using slash commands or agents.
+Each stage feeds the next. Codex or Claude Code can orchestrate the flow, or you can run any stage independently using skills, commands, agents, or direct tools.
 
 ---
 
 ## Skills
 
-7 skill domains. Each is a focused SKILL.md file Claude loads when relevant.
+10 skill domains. Each is a focused SKILL.md file that Codex or Claude Code loads when relevant.
 
 | Skill | What It Contains | When to Use |
 |:---|:---|:---|
@@ -161,12 +176,15 @@ Each stage feeds the next. Claude orchestrates the entire flow, or you can run a
 | `web3-audit` | 10 DeFi bug classes, pre-dive kill signals (TVL formula), Foundry PoC template, grep patterns | Any smart contract audit |
 | `report-writing` | H1/Bugcrowd/Intigriti/Immunefi templates, CVSS 3.1, title formula, impact statement, escalation language | Writing a submission |
 | `triage-validation` | 7-Question Gate, 4 gates, never-submit list, conditionally-valid table, 60-second checklist | Before writing any report |
+| `mobile` | Android/iOS assessment router that chooses static or dynamic workflow and hands backend leads to web recon | General mobile app review |
+| `mobile-static` | APK/AAB/IPA/source review: metadata, permissions, storage, crypto, network config, deep links, WebViews, secrets | Offline mobile artifact review |
+| `mobile-dynamic` | Device/emulator testing: proxying, Frida/Objection, pinning, auth/session flows, runtime storage, IPC, WebViews | Runtime mobile app testing |
 
 ---
 
 ## Commands
 
-8 slash commands covering the full hunting workflow.
+10 slash commands covering the full hunting workflow.
 
 | Command | What It Does |
 |:---|:---|
@@ -178,6 +196,8 @@ Each stage feeds the next. Claude orchestrates the entire flow, or you can run a
 | `/scope <asset>` | Verify an asset is in scope, owned by target org, not third-party |
 | `/triage` | Quick 7-Question Gate — go/no-go in 2 minutes before spending time validating |
 | `/web3-audit <contract>` | Smart contract audit — 10-class checklist, grep patterns, Foundry PoC template |
+| `/mobile-static <artifact>` | Static Android/iOS review for APK, AAB, IPA, extracted files, or source trees |
+| `/mobile-dynamic <app>` | Dynamic Android/iOS runtime testing on a device, emulator, or test harness |
 
 ---
 
@@ -319,9 +339,9 @@ sudo apt install golang python3 nodejs jq
 ### Install
 
 ```bash
-git clone https://github.com/shuvonsec/claude-bug-bounty.git
-cd claude-bug-bounty
-chmod +x install.sh && ./install.sh
+git clone https://github.com/0x1Jar/codex-bug.git
+cd codex-bug
+chmod +x install.sh && ./install.sh --all
 cp config.example.json config.json  # Add your API keys
 ```
 
@@ -356,22 +376,31 @@ This installs 18+ tools: `subfinder`, `httpx`, `dnsx`, `nuclei`, `katana`, `wayb
 ## Directory Structure
 
 ```
-claude-bug-bounty/
-├── CLAUDE.md                   # Plugin guide — quick-start, commands, structure
+codex-bug/
+├── AGENTS.md                   # Codex repo instructions
+├── CLAUDE.md                   # Claude Code repo instructions
 ├── README.md                   # This file
 ├── CHANGELOG.md                # Version history
-├── install.sh                  # One-command skill installer
+├── install.sh                  # One installer for Codex and Claude Code
+├── .codex-plugin/plugin.json   # Codex plugin manifest
+├── .claude-plugin/plugin.json  # Claude Code plugin manifest
+├── .agents/plugins/marketplace.json  # Codex local marketplace
+├── .claude-plugin/marketplace.json   # Claude Code local marketplace
+├── .codex/                     # Codex project config, hooks, and custom agents
 │
-├── skills/                     # 7 skill domains
+├── skills/                     # 10 skill domains
 │   ├── bug-bounty/SKILL.md     # Master workflow (1,200+ lines)
 │   ├── web2-recon/SKILL.md     # Recon pipeline
 │   ├── web2-vuln-classes/SKILL.md  # 18 bug classes + bypass tables
 │   ├── security-arsenal/SKILL.md   # Payloads + submission rules
 │   ├── web3-audit/SKILL.md     # 10 DeFi bug classes + Foundry
 │   ├── report-writing/SKILL.md # Report templates + CVSS
-│   └── triage-validation/SKILL.md  # 7-Question Gate + 4 gates
+│   ├── triage-validation/SKILL.md  # 7-Question Gate + 4 gates
+│   ├── mobile/SKILL.md         # Mobile assessment router
+│   ├── mobile-static/SKILL.md  # Static Android/iOS review
+│   └── mobile-dynamic/SKILL.md # Dynamic Android/iOS testing
 │
-├── commands/                   # 8 slash commands
+├── commands/                   # 10 slash commands
 │   ├── recon.md                # /recon target.com
 │   ├── hunt.md                 # /hunt target.com
 │   ├── validate.md             # /validate
@@ -379,16 +408,18 @@ claude-bug-bounty/
 │   ├── chain.md                # /chain
 │   ├── scope.md                # /scope <asset>
 │   ├── triage.md               # /triage
-│   └── web3-audit.md           # /web3-audit <contract>
+│   ├── web3-audit.md           # /web3-audit <contract>
+│   ├── mobile-static.md        # /mobile-static <artifact>
+│   └── mobile-dynamic.md       # /mobile-dynamic <app>
 │
-├── agents/                     # 5 specialized agents
-│   ├── recon-agent.md          # Runs recon pipeline (haiku)
-│   ├── report-writer.md        # Generates reports (opus)
-│   ├── validator.md            # Validates findings (sonnet)
-│   ├── web3-auditor.md         # Audits contracts (sonnet)
-│   └── chain-builder.md        # Builds exploit chains (sonnet)
+├── agents/                     # 5 Claude Code specialized agents
+│   ├── recon-agent.md          # Runs recon pipeline
+│   ├── report-writer.md        # Generates reports
+│   ├── validator.md            # Validates findings
+│   ├── web3-auditor.md         # Audits contracts
+│   └── chain-builder.md        # Builds exploit chains
 │
-├── hooks/hooks.json            # Session start/stop hooks
+├── hooks/hooks.json            # Claude Code session reminders
 │
 ├── rules/                      # Always-active rules
 │   ├── hunting.md              # 17 hunting rules
@@ -416,7 +447,8 @@ claude-bug-bounty/
 ├── docs/
 │   ├── payloads.md             # Complete payload arsenal
 │   ├── advanced-techniques.md  # A→B chaining, mobile, CI/CD
-│   └── smart-contract-audit.md # Web3 audit guide
+│   ├── smart-contract-audit.md # Web3 audit guide
+│   └── agent-support.md        # Codex + Claude Code setup
 ├── web3/                       # Smart contract skill chain (10 files)
 ├── scripts/
 │   ├── dork_runner.py          # Google dork automation
@@ -451,10 +483,7 @@ git push origin feature/your-contribution
 
 | | |
 |:--|:--|
-| GitHub | [shuvonsec](https://github.com/shuvonsec) |
-| Email | [shuvonsec@gmail.com](mailto:shuvonsec@gmail.com) |
-| Twitter | [@shuvonsec](https://x.com/shuvonsec) |
-| LinkedIn | [shuvonsec](https://linkedin.com/in/shuvonsec) |
+| GitHub | [0x1Jar/codex-bug](https://github.com/0x1Jar/codex-bug) |
 
 ---
 

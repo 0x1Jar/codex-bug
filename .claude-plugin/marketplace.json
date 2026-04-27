@@ -1,0 +1,17 @@
+{
+  "name": "codex-bug-local",
+  "metadata": {
+    "description": "Local marketplace for the Codex Bug Bounty dual Codex and Claude Code plugin."
+  },
+  "owner": {
+    "name": "0x1Jar"
+  },
+  "plugins": [
+    {
+      "name": "codex-bug",
+      "source": "./",
+      "description": "Bug bounty hunting workflows for Claude Code and Codex.",
+      "version": "2.2.0"
+    }
+  ]
+}

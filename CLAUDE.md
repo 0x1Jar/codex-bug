@@ -1,76 +1,37 @@
-# Claude Bug Bounty — Plugin Guide
+# Codex Bug Bounty - Claude Code Guide
 
-This repo is a Claude Code plugin for professional bug bounty hunting across HackerOne, Bugcrowd, Intigriti, and Immunefi.
+This repository is a dual Codex and Claude Code bug bounty plugin. These instructions are for Claude Code sessions.
 
-## What's Here
+## How Claude Code Should Use This Repo
 
-### Skills (7 domains — load with `/bug-bounty`, `/web2-recon`, etc.)
+- Load the plugin from this repo with `claude --plugin-dir .`, or install it through the local marketplace in `.claude-plugin/marketplace.json`.
+- Claude Code can use the root `skills/`, `commands/`, `agents/`, and `hooks/` directories as plugin components.
+- Plugin skills may be namespaced when installed as a plugin. Standalone copied skills and commands keep their short names.
+- Use slash commands such as `/recon`, `/hunt`, `/validate`, `/report`, `/triage`, `/scope`, `/chain`, `/web3-audit`, `/mobile-static`, and `/mobile-dynamic` only for authorized work.
+- Keep `rules/hunting.md` and `rules/reporting.md` active as the project safety baseline.
 
-| Skill | Domain |
-|---|---|
-| `skills/bug-bounty/` | Master workflow — recon to report, all vuln classes, LLM testing, chains |
-| `skills/web2-recon/` | Subdomain enum, live host discovery, URL crawling, nuclei |
-| `skills/web2-vuln-classes/` | 18 bug classes with bypass tables (SSRF, open redirect, file upload, Agentic AI) |
-| `skills/security-arsenal/` | Payloads, bypass tables, gf patterns, always-rejected list |
-| `skills/web3-audit/` | 10 smart contract bug classes, Foundry PoC template, pre-dive kill signals |
-| `skills/report-writing/` | H1/Bugcrowd/Intigriti/Immunefi report templates, CVSS 3.1, human tone |
-| `skills/triage-validation/` | 7-Question Gate, 4 gates, never-submit list, conditionally valid table |
+## Safety Rules
 
-### Commands (8 slash commands)
+1. Read full program scope before touching any asset.
+2. Never test out-of-scope, third-party, staging, or excluded paths unless the program explicitly allows it.
+3. Do not report theoretical bugs. Ask: "Can an attacker do this right now?"
+4. Run `/validate` or the 7-Question Gate before writing any report.
+5. Kill weak findings fast. N/A submissions hurt validity ratio.
+6. Keep recon output in `recon/`, evidence in `findings/`, and reports in `reports/`.
 
-| Command | Usage |
-|---|---|
-| `/recon` | `/recon target.com` — full recon pipeline |
-| `/hunt` | `/hunt target.com` — start hunting |
-| `/validate` | `/validate` — run 7-Question Gate on current finding |
-| `/report` | `/report` — write submission-ready report |
-| `/chain` | `/chain` — build A→B→C exploit chain |
-| `/scope` | `/scope <asset>` — verify asset is in scope |
-| `/triage` | `/triage` — quick 7-Question Gate |
-| `/web3-audit` | `/web3-audit <contract.sol>` — smart contract audit |
+## Validation
 
-### Agents (5 specialized agents)
-
-- `recon-agent` — subdomain enum + live host discovery
-- `report-writer` — generates H1/Bugcrowd/Immunefi reports
-- `validator` — 4-gate checklist on a finding
-- `web3-auditor` — smart contract bug class analysis
-- `chain-builder` — builds A→B→C exploit chains
-
-### Rules (always active)
-
-- `rules/hunting.md` — 17 critical hunting rules
-- `rules/reporting.md` — report quality rules
-
-### Tools (Python/shell — run directly)
-
-Located in repo root:
-- `hunt.py` — master orchestrator
-- `recon_engine.sh` — subdomain + URL discovery
-- `validate.py` — 4-gate finding validator
-- `report_generator.py` — report writer
-- `learn.py` — CVE + disclosure intel
-
-## Start Here
+After support-file changes, prefer:
 
 ```bash
-claude
-# /recon target.com
-# /hunt target.com
-# /validate   (after finding something)
-# /report     (after validation passes)
+python3 -m json.tool .claude-plugin/plugin.json
+python3 -m json.tool .claude-plugin/marketplace.json
+python3 -m json.tool hooks/hooks.json
+bash -n install.sh
 ```
 
-## Install Skills
+If Claude Code is installed, also run:
 
 ```bash
-chmod +x install.sh && ./install.sh
+claude plugin validate .
 ```
-
-## Critical Rules (Always Active)
-
-1. READ FULL SCOPE before touching any asset
-2. NEVER hunt theoretical bugs — "Can attacker do this RIGHT NOW?"
-3. Run 7-Question Gate BEFORE writing any report
-4. KILL weak findings fast — N/A hurts your validity ratio
-5. 5-minute rule — nothing after 5 min = move on

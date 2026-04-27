@@ -1,5 +1,23 @@
 # Changelog
 
+## v2.2.0 - Dual Codex + Claude Code Support (Apr 2026)
+
+### Added
+- Codex plugin metadata in `.codex-plugin/plugin.json`.
+- Claude Code plugin metadata in `.claude-plugin/plugin.json`.
+- Local marketplace files for Codex and Claude Code.
+- Codex project agents in `.codex/agents/`.
+- Non-blocking Codex session reminder hooks.
+- Mobile skills for `mobile`, `mobile-static`, and `mobile-dynamic`.
+- Claude Code commands for `/mobile-static` and `/mobile-dynamic`.
+- `docs/agent-support.md` for dual-platform setup.
+
+### Updated
+- `install.sh` now supports `--codex`, `--claude`, and `--all`.
+- `AGENTS.md` and `CLAUDE.md` are platform-specific entrypoints.
+- `hooks/hooks.json` now uses the current Claude Code hook shape.
+- README branding and quickstart now cover both Codex and Claude Code.
+
 ## v2.1.0 — 20 Vuln Classes + Payload Expansion (Mar 2026)
 
 ### Config

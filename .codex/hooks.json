@@ -1,0 +1,29 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '%s\\n' 'Bug bounty workspace loaded. Verify scope before touching assets, then use $web2-recon, $triage-validation, or $report-writing as needed.'",
+            "statusMessage": "Loading bug bounty workspace reminder",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '%s\\n' 'Reminder: save evidence under findings/ and validate with the 7-Question Gate before report writing.'",
+            "statusMessage": "Checking bug bounty handoff reminder",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

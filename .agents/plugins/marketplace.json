@@ -1,0 +1,20 @@
+{
+  "name": "codex-bug-local",
+  "interface": {
+    "displayName": "Codex Bug Local Plugins"
+  },
+  "plugins": [
+    {
+      "name": "codex-bug",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}
