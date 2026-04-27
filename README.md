@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/image.png" alt="Codex Bug Bounty Logo" width="360" />
+
 # Codex Bug Bounty
 
 **Dual Codex + Claude Code harness for professional bug bounty hunting. Web2 + Web3. Recon to report.**
@@ -32,6 +34,7 @@ This release makes the repo a real dual-agent plugin:
 - Codex support: `AGENTS.md`, `.codex-plugin/plugin.json`, `.agents/plugins/marketplace.json`, `.codex/agents/`, and optional non-blocking Codex hooks.
 - Claude Code support: `CLAUDE.md`, `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, root plugin components, and current hook config shape.
 - One installer: `./install.sh --codex`, `./install.sh --claude`, or `./install.sh --all`.
+- Restored branding asset: the README logo lives at `assets/image.png`.
 - Shared docs: see [`docs/agent-support.md`](docs/agent-support.md) for platform-specific setup.
 
 ### v2.0.0 — ECC-Style Plugin Architecture (Mar 2026)
@@ -382,6 +385,8 @@ codex-bug/
 ├── README.md                   # This file
 ├── CHANGELOG.md                # Version history
 ├── install.sh                  # One installer for Codex and Claude Code
+├── assets/
+│   └── image.png               # README logo
 ├── .codex-plugin/plugin.json   # Codex plugin manifest
 ├── .claude-plugin/plugin.json  # Claude Code plugin manifest
 ├── .agents/plugins/marketplace.json  # Codex local marketplace
