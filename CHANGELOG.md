@@ -11,6 +11,8 @@
 - Mobile skills for `mobile`, `mobile-static`, and `mobile-dynamic`.
 - Claude Code commands for `/mobile-static` and `/mobile-dynamic`.
 - `docs/agent-support.md` for dual-platform setup.
+- `docs/mcp-burp-suite.md` for safe Burp Suite MCP setup.
+- `docs/hackerone-disclosed-reports.md` for studying public report patterns and guiding Claude Code exploit-chain workflows.
 
 ### Updated
 - `install.sh` now supports `--codex`, `--claude`, and `--all`.

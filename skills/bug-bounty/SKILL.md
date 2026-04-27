@@ -50,7 +50,7 @@ Full pipeline: Recon -> Learn -> Hunt -> Validate -> Report. One skill for every
 16. **TWO-EYE APPROACH** -- combine systematic testing (checklist) with anomaly detection (watch for unexpected behavior)
 17. **T-SHAPED KNOWLEDGE** -- go DEEP in one area and BROAD across everything else
 18. **BURP MCP IS CONTEXT, NOT PROOF** -- use `docs/mcp-burp-suite.md` for authorized traffic only; reproduce in Repeater/direct requests before reporting
-19. **DISCLOSED REPORTS GUIDE HYPOTHESES** -- use `docs/hackerone-disclosed-reports.md` to learn patterns and avoid duplicates, not to copy reports
+19. **DISCLOSED REPORTS GUIDE HYPOTHESES** -- use `docs/hackerone-disclosed-reports.md` to learn patterns, avoid duplicates, and shape safe exploit-chain steps when a real vulnerability signal appears. Do not copy reports.
 
 ---
 
@@ -146,6 +146,7 @@ Client -> CDN -> Load Balancer -> App Server -> Database
 - [ ] I know the tech stack (language, framework, auth system, caching)
 - [ ] I've read at least 3 disclosed reports for this program
 - [ ] I've mapped useful disclosed-report patterns to fresh hypotheses, not copycat submissions
+- [ ] If I found a vulnerability indication, I checked `docs/hackerone-disclosed-reports.md` for similar accepted exploit paths before building the next step
 - [ ] If using Burp MCP, it is local-only and filtered to in-scope traffic
 - [ ] I have 2 test accounts ready (attacker + victim)
 - [ ] I've defined my primary target: ONE crown jewel I'm hunting for today
@@ -410,6 +411,18 @@ curl -s "https://hackerone.com/graphql" \
   -d '{"query":"{ hacktivity_items(first:25, order_by:{field:popular, direction:DESC}, where:{team:{handle:{_eq:\"PROGRAM\"}}}) { nodes { ... on HacktivityDocument { report { title severity_rating } } } } }"}' \
   | jq '.data.hacktivity_items.nodes[].report'
 ```
+
+## Exploit-Step From Disclosure Signals
+
+When you find a reference, anomaly, or vulnerability indication:
+
+1. Read `docs/hackerone-disclosed-reports.md`.
+2. Search disclosed reports for the same program, endpoint type, feature, and bug class.
+3. Extract only the pattern: attacker role, victim action, affected object, impact, and proof style.
+4. Convert that pattern into a fresh exploit step for the current in-scope asset.
+5. Validate with your own request/response evidence before chaining or reporting.
+
+Do not use old disclosures as proof. They only guide the next safe test.
 
 ## "What Changed" Method
 1. Find disclosed report for similar tech

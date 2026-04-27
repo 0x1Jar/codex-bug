@@ -12,6 +12,7 @@ After confirming a standalone finding that:
 - Is on the "conditionally valid" list (open redirect, SSRF DNS-only, etc.)
 - Has been validated but classified as Low
 - Could be Medium or High if combined with another finding
+- Has a reference, anomaly, or vulnerability indication that matches a disclosed HackerOne pattern
 
 ## Usage
 
@@ -24,6 +25,9 @@ Describe bug A when prompted. Include:
 - Endpoint
 - What you can do with it
 - Target platform
+- Any disclosed-report reference or vulnerability indication you noticed
+
+Before choosing B or C, read `docs/hackerone-disclosed-reports.md` and search for similar accepted exploit paths. Use the old reports only to shape the next safe test; the chain still needs fresh evidence on the current in-scope asset.
 
 ## The A→B Signal Table
 
