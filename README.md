@@ -2,7 +2,7 @@
 
 <img src="assets/image.png" alt="Codex Bug Bounty Logo" width="360" />
 
-# Codex Bug Bounty
+# BountyForge
 
 **Dual Codex + Claude Code harness for professional bug bounty hunting. Web2 + Web3. Recon to report.**
 
