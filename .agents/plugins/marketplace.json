@@ -1,7 +1,7 @@
 {
-  "name": "codex-bug-local",
+  "name": "bountyforge-local",
   "interface": {
-    "displayName": "Codex Bug Local Plugins"
+    "displayName": "BountyForge Local Plugins"
   },
   "plugins": [
     {

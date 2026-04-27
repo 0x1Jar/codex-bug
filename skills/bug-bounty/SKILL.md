@@ -49,6 +49,8 @@ Full pipeline: Recon -> Learn -> Hunt -> Validate -> Report. One skill for every
 15. **ONE-HOUR RULE** -- stuck on one target for an hour with no progress? SWITCH CONTEXT
 16. **TWO-EYE APPROACH** -- combine systematic testing (checklist) with anomaly detection (watch for unexpected behavior)
 17. **T-SHAPED KNOWLEDGE** -- go DEEP in one area and BROAD across everything else
+18. **BURP MCP IS CONTEXT, NOT PROOF** -- use `docs/mcp-burp-suite.md` for authorized traffic only; reproduce in Repeater/direct requests before reporting
+19. **DISCLOSED REPORTS GUIDE HYPOTHESES** -- use `docs/hackerone-disclosed-reports.md` to learn patterns and avoid duplicates, not to copy reports
 
 ---
 
@@ -143,6 +145,8 @@ Client -> CDN -> Load Balancer -> App Server -> Database
 - [ ] I've used the app as a real user for 15+ minutes
 - [ ] I know the tech stack (language, framework, auth system, caching)
 - [ ] I've read at least 3 disclosed reports for this program
+- [ ] I've mapped useful disclosed-report patterns to fresh hypotheses, not copycat submissions
+- [ ] If using Burp MCP, it is local-only and filtered to in-scope traffic
 - [ ] I have 2 test accounts ready (attacker + victim)
 - [ ] I've defined my primary target: ONE crown jewel I'm hunting for today
 
@@ -396,6 +400,9 @@ grep -rn "as u8\|as u16\|as u32\|as usize" --include="*.rs" | grep -v "checked\|
 # PHASE 2: LEARN (Pre-Hunt Intelligence)
 
 ## Read Disclosed Reports
+
+Use `docs/hackerone-disclosed-reports.md` as the study workflow. Do not copy report text; extract bug class, affected feature, accepted impact, evidence style, and duplicate clues.
+
 ```bash
 # By program on HackerOne
 curl -s "https://hackerone.com/graphql" \
@@ -969,6 +976,7 @@ Check the exact domain/endpoint against the program's scope page.
 
 ### Q5: Did I check Hacktivity/changelog for duplicates?
 Search the program's disclosed reports and recent changelog entries.
+Use `docs/hackerone-disclosed-reports.md` to structure the duplicate and bug-class check.
 
 ### Q6: Is this NOT on the "always rejected" list?
 Check the list below. If it's there and you can't chain it -> KILL IT.

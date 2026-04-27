@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Codex Bug Bounty - install support files for Codex and Claude Code.
+# BountyForge - install support files for Codex and Claude Code.
 
 set -euo pipefail
 
@@ -50,7 +50,7 @@ install_codex() {
     local skills_dir="${HOME}/.codex/skills"
     local agents_dir="${HOME}/.codex/agents"
 
-    echo "Installing Codex Bug Bounty support..."
+    echo "Installing BountyForge Codex support..."
     mkdir -p "$skills_dir" "$agents_dir"
 
     for skill_dir in skills/*/; do
@@ -76,7 +76,7 @@ install_claude() {
     local commands_dir="${HOME}/.claude/commands"
     local agents_dir="${HOME}/.claude/agents"
 
-    echo "Installing Claude Code Bug Bounty support..."
+    echo "Installing BountyForge Claude Code support..."
     mkdir -p "$skills_dir" "$commands_dir" "$agents_dir"
 
     for skill_dir in skills/*/; do

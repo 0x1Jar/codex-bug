@@ -118,6 +118,7 @@ Run in sequence. ALL 4 must PASS.
 ### Gate 2: Deduplication Check (5 minutes)
 ```
 [ ] Searched HackerOne Hacktivity for this program + similar bug title/endpoint
+[ ] Checked `docs/hackerone-disclosed-reports.md` for the report-study workflow
 [ ] Searched GitHub issues for target repo
 [ ] Read most recent 5 disclosed reports for this program
 [ ] Not a "known issue" in their changelog or public docs

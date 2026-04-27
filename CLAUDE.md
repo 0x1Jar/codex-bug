@@ -1,4 +1,4 @@
-# Codex Bug Bounty - Claude Code Guide
+# BountyForge - Claude Code Guide
 
 This repository is a dual Codex and Claude Code bug bounty plugin. These instructions are for Claude Code sessions.
 
@@ -8,6 +8,7 @@ This repository is a dual Codex and Claude Code bug bounty plugin. These instruc
 - Claude Code can use the root `skills/`, `commands/`, `agents/`, and `hooks/` directories as plugin components.
 - Plugin skills may be namespaced when installed as a plugin. Standalone copied skills and commands keep their short names.
 - Use slash commands such as `/recon`, `/hunt`, `/validate`, `/report`, `/triage`, `/scope`, `/chain`, `/web3-audit`, `/mobile-static`, and `/mobile-dynamic` only for authorized work.
+- Use `docs/mcp-burp-suite.md` only for authorized Burp Suite MCP traffic, and use `docs/hackerone-disclosed-reports.md` to study public report patterns before choosing bug classes.
 - Keep `rules/hunting.md` and `rules/reporting.md` active as the project safety baseline.
 
 ## Safety Rules

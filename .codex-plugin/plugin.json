@@ -1,7 +1,7 @@
 {
   "name": "codex-bug",
   "version": "2.2.0",
-  "description": "Bug bounty hunting workflows for Codex: recon, validation, reporting, Web2, Web3, and AI security.",
+  "description": "BountyForge bug bounty workflows for Codex: recon, validation, reporting, Web2, Web3, mobile, and AI security.",
   "author": {
     "name": "0x1Jar",
     "url": "https://github.com/0x1Jar"
@@ -18,9 +18,9 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Codex Bug Bounty",
-    "shortDescription": "Recon-to-report bug bounty workflows for Codex.",
-    "longDescription": "Reusable Codex skills for authorized Web2, Web3, mobile-adjacent, and AI security testing workflows.",
+    "displayName": "BountyForge",
+    "shortDescription": "Agent-powered recon-to-report bug bounty workflows for Codex.",
+    "longDescription": "Reusable Codex skills for authorized Web2, Web3, mobile, AI security, Burp MCP-assisted analysis, and disclosed-report learning workflows.",
     "developerName": "0x1Jar",
     "category": "Developer Tools",
     "capabilities": [
@@ -29,9 +29,9 @@
       "Shell"
     ],
     "defaultPrompt": [
-      "Use Codex Bug Bounty to run safe recon on an in-scope target.",
-      "Use Codex Bug Bounty to validate this finding before report writing.",
-      "Use Codex Bug Bounty to draft a submission-ready report from confirmed evidence."
+      "Use BountyForge to run safe recon on an in-scope target.",
+      "Use BountyForge to validate this finding before report writing.",
+      "Use BountyForge to draft a submission-ready report from confirmed evidence."
     ]
   }
 }

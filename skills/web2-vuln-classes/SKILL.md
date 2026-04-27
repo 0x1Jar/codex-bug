@@ -7,6 +7,8 @@ description: Complete reference for 20 web2 bug classes with root causes, detect
 
 Root cause, pattern, bypass table, chaining opportunity, real paid examples.
 
+For bug-class selection from public HackerOne disclosures, use `docs/hackerone-disclosed-reports.md`. For request/response context from Burp Suite MCP, use `docs/mcp-burp-suite.md` and validate every candidate manually.
+
 ---
 
 ## 1. IDOR — INSECURE DIRECT OBJECT REFERENCE

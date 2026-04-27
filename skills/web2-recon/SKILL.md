@@ -230,6 +230,7 @@ Score before spending time. Skip if score < 4.
 | Tech stack you know | +1 |
 | Source code available | +1 |
 | Prior disclosed reports to study | +1 |
+| Useful Hacktivity patterns mapped to fresh hypotheses | +1 |
 
 **< 4:** Skip
 **4-5:** Only if nothing better available
@@ -413,6 +414,8 @@ Open Burp Suite. Browse the app with proxy on:
 2. Perform main user actions (create/read/update/delete resources)
 3. Note all API calls in Burp history
 4. Look for endpoints not in your URL list
+
+If a local Burp MCP server is configured, use `docs/mcp-burp-suite.md` to summarize only in-scope traffic. Treat MCP output as a navigation aid; validate findings with direct requests.
 
 ### After 30 min: Prioritize
 

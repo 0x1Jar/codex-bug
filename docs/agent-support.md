@@ -51,6 +51,30 @@ Standalone copied commands keep their short names:
 
 When installed as a plugin, Claude Code may namespace skills by plugin name. If so, use the namespaced entry shown by `/help`.
 
+## Burp Suite MCP
+
+BountyForge does not auto-start an MCP server. Add your preferred Burp Suite MCP server locally, keep it bound to `127.0.0.1`, and only expose in-scope traffic.
+
+Codex examples:
+
+```bash
+codex mcp add burp-suite -- <your-burp-mcp-command>
+codex mcp add burp-suite --url http://127.0.0.1:<port>/mcp
+```
+
+Claude Code examples:
+
+```bash
+claude mcp add burp-suite -- <your-burp-mcp-command>
+claude mcp add --transport http burp-suite http://127.0.0.1:<port>/mcp
+```
+
+See `docs/mcp-burp-suite.md` for the full safety checklist and usage prompts.
+
+## Disclosed Report Learning
+
+Use `docs/hackerone-disclosed-reports.md` before deep hunting and before report submission. It helps map disclosed HackerOne patterns to bug classes without copying report text or overclaiming severity.
+
 ## Installer
 
 Use one installer for both platforms:

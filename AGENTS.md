@@ -1,4 +1,4 @@
-# Codex Bug Bounty - Codex Guide
+# BountyForge - Codex Guide
 
 This repository is a dual Codex and Claude Code bug bounty plugin. These instructions are for Codex sessions started in this repo.
 
@@ -8,6 +8,7 @@ This repository is a dual Codex and Claude Code bug bounty plugin. These instruc
 - Use `rules/hunting.md` and `rules/reporting.md` as always-on security guidance.
 - Use `commands/*.md` as reference prompt docs. They document slash-style workflows, but Codex users should normally invoke installed skills with `$skill-name` or describe the task naturally.
 - Use `.codex/agents/*.toml` for Codex custom subagents when the user explicitly asks for agent delegation.
+- Use `docs/mcp-burp-suite.md` only for authorized Burp Suite MCP traffic, and use `docs/hackerone-disclosed-reports.md` to study public report patterns before choosing bug classes.
 - Use the Python and shell tools directly only for authorized targets and only after scope is clear.
 
 ## Safety Rules
