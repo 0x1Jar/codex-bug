@@ -415,7 +415,7 @@ Open Burp Suite. Browse the app with proxy on:
 3. Note all API calls in Burp history
 4. Look for endpoints not in your URL list
 
-If a local Burp MCP server is configured, use `docs/mcp-burp-suite.md` to summarize only in-scope traffic. Treat MCP output as a navigation aid; validate findings with direct requests.
+For Claude Code sessions with a local Burp MCP server configured, use `docs/mcp-burp-suite.md` to summarize only in-scope traffic. Treat MCP output as a navigation aid; validate findings with direct requests.
 
 ### After 30 min: Prioritize
 

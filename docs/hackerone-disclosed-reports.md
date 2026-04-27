@@ -86,7 +86,7 @@ Fresh hypothesis for my target:
 - Start with the highest-value feature, not the bug class.
 - Compare disclosed patterns against the current app's auth boundaries.
 - Look for sibling endpoints and old API versions near a previously paid pattern.
-- Use Burp Suite MCP or saved Repeater evidence to map real request flows.
+- In Claude Code sessions, use Burp Suite MCP or saved Repeater evidence to map real request flows.
 - Prefer fresh proof on current in-scope assets over historical similarity.
 - When you see a vulnerability indication, use similar disclosed reports to decide the next exploit step: required attacker role, victim action, object type, impact proof, and likely chain candidate.
 - For Claude Code `/chain` or exploit-chain work, treat this file as the required study step before moving from bug A to bug B or C.

@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "BountyForge",
     "shortDescription": "Agent-powered recon-to-report bug bounty workflows for Codex.",
-    "longDescription": "Reusable Codex skills for authorized Web2, Web3, mobile, AI security, Burp MCP-assisted analysis, and disclosed-report learning workflows.",
+    "longDescription": "Reusable Codex skills for authorized Web2, Web3, mobile, AI security, and disclosed-report learning workflows.",
     "developerName": "0x1Jar",
     "category": "Developer Tools",
     "capabilities": [

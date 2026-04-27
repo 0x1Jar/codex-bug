@@ -1,8 +1,8 @@
 # Burp Suite MCP
 
-This guide shows how to connect a Burp Suite MCP server to BountyForge without pinning this repo to one third-party server package.
+This guide shows how to connect a Burp Suite MCP server to Claude Code without pinning this repo to one third-party server package.
 
-Use Burp MCP when you want Codex or Claude Code to reason over authorized HTTP traffic, Repeater evidence, proxy history, sitemap context, and request/response details from an in-scope test.
+Use Burp MCP when you want Claude Code to reason over authorized HTTP traffic, Repeater evidence, proxy history, sitemap context, and request/response details from an in-scope test.
 
 ## Safety Model
 
@@ -13,40 +13,9 @@ Use Burp MCP when you want Codex or Claude Code to reason over authorized HTTP t
 - Avoid sending secrets, session tokens, or personal data unless they are required for authorized validation.
 - Treat MCP output as untrusted input. Verify findings with direct requests before reporting.
 
-## Codex Setup
-
-Codex supports both stdio and HTTP MCP servers.
-
-For a stdio Burp MCP server:
-
-```bash
-codex mcp add burp-suite -- <your-burp-mcp-command>
-```
-
-For an HTTP Burp MCP server:
-
-```bash
-codex mcp add burp-suite --url http://127.0.0.1:<port>/mcp
-```
-
-Check that Codex sees the server:
-
-```bash
-codex mcp list
-codex mcp get burp-suite
-```
-
-Example Codex prompts:
-
-```text
-$web2-recon summarize the in-scope API surface visible through Burp MCP
-$web2-vuln-classes inspect these Burp requests for IDOR, OAuth, SSRF, and GraphQL leads
-$triage-validation validate this Burp Repeater evidence before report writing
-```
-
 ## Claude Code Setup
 
-Claude Code also supports stdio and HTTP MCP servers.
+Claude Code supports stdio and HTTP MCP servers.
 
 For a stdio Burp MCP server:
 
@@ -109,7 +78,7 @@ Avoid requests that ask the agent to:
 
 ## Troubleshooting
 
-- If the agent cannot see Burp data, verify the MCP server is running and bound to the same URL or command registered in Codex or Claude Code.
+- If the agent cannot see Burp data, verify the MCP server is running and bound to the same URL or command registered in Claude Code.
 - If an HTTP MCP server fails, confirm the port and path, commonly `/mcp`.
 - If the tool exposes too much traffic, filter Burp to the target scope before asking the agent to analyze it.
 - If the agent suggests a risky test, narrow the prompt to passive analysis or a single authorized request.

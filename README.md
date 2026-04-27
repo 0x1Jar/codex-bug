@@ -31,7 +31,7 @@ Use it when you want help with:
 - Web2 recon and attack-surface mapping
 - mobile static analysis for APK, AAB, IPA, and source trees
 - mobile dynamic testing with proxying, Frida, Objection, logs, storage, IPC, and WebViews
-- Burp Suite MCP-assisted review of authorized proxy traffic and Repeater evidence
+- Claude Code Burp Suite MCP-assisted review of authorized proxy traffic and Repeater evidence
 - bug-class hunting for IDOR, auth bypass, XSS, SSRF, GraphQL, OAuth, upload bugs, race conditions, and more
 - Web3 smart contract audit workflow and Foundry PoC structure
 - HackerOne disclosed-report study for bug-class selection and duplicate checks
@@ -151,6 +151,7 @@ Common slash commands:
 ```text
 /recon target.com
 /hunt target.com
+/mobile ./app.apk
 /mobile-static ./app.apk
 /mobile-dynamic com.example.app
 /validate
@@ -203,12 +204,11 @@ python3 report_generator.py findings/
 
 ### Burp MCP And Disclosed Report Learning
 
-Use Burp Suite MCP when you want agent help over in-scope HTTP traffic, Repeater evidence, sitemap context, or proxy history. BountyForge documents safe Codex and Claude Code setup without auto-starting a server from this repo.
+Use Burp Suite MCP with Claude Code when you want agent help over in-scope HTTP traffic, Repeater evidence, sitemap context, or proxy history. BountyForge documents safe Claude Code setup without auto-starting a server from this repo.
 
 Use HackerOne disclosed reports before deep hunting to learn accepted impact patterns, common duplicates, and bug classes that have paid on similar features.
 
 ```text
-$web2-vuln-classes use Burp MCP context to find authorization and GraphQL leads
 $bug-bounty compare this target against HackerOne disclosed report patterns
 /hunt target.com using only in-scope Burp MCP traffic
 /validate after checking Hacktivity for duplicates
@@ -333,6 +333,7 @@ Claude Code discovers these from `commands/`.
 | `/report` | write a submission-ready report |
 | `/chain` | reason about A -> B -> C exploit chains |
 | `/web3-audit <path>` | audit smart contract code |
+| `/mobile <target>` | route general mobile analysis to static or dynamic review |
 | `/mobile-static <apk/aab/ipa/source>` | static mobile review |
 | `/mobile-dynamic <package/bundle/app>` | dynamic mobile testing |
 
@@ -403,7 +404,7 @@ These folders are for local work output. Review `.gitignore` before committing g
 | File | Use It For |
 |:---|:---|
 | `docs/agent-support.md` | Codex and Claude Code setup details |
-| `docs/mcp-burp-suite.md` | Burp Suite MCP setup and safe usage for Codex and Claude Code |
+| `docs/mcp-burp-suite.md` | Burp Suite MCP setup and safe usage for Claude Code |
 | `docs/hackerone-disclosed-reports.md` | curated HackerOne disclosed-report study workflow |
 | `docs/payloads.md` | payload reference |
 | `docs/advanced-techniques.md` | chaining, mobile, CI/CD, and deeper testing notes |

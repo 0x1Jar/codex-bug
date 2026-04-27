@@ -49,7 +49,7 @@ Full pipeline: Recon -> Learn -> Hunt -> Validate -> Report. One skill for every
 15. **ONE-HOUR RULE** -- stuck on one target for an hour with no progress? SWITCH CONTEXT
 16. **TWO-EYE APPROACH** -- combine systematic testing (checklist) with anomaly detection (watch for unexpected behavior)
 17. **T-SHAPED KNOWLEDGE** -- go DEEP in one area and BROAD across everything else
-18. **BURP MCP IS CONTEXT, NOT PROOF** -- use `docs/mcp-burp-suite.md` for authorized traffic only; reproduce in Repeater/direct requests before reporting
+18. **CLAUDE BURP MCP IS CONTEXT, NOT PROOF** -- in Claude Code sessions, use `docs/mcp-burp-suite.md` for authorized traffic only; reproduce in Repeater/direct requests before reporting
 19. **DISCLOSED REPORTS GUIDE HYPOTHESES** -- use `docs/hackerone-disclosed-reports.md` to learn patterns, avoid duplicates, and shape safe exploit-chain steps when a real vulnerability signal appears. Do not copy reports.
 
 ---
@@ -147,7 +147,7 @@ Client -> CDN -> Load Balancer -> App Server -> Database
 - [ ] I've read at least 3 disclosed reports for this program
 - [ ] I've mapped useful disclosed-report patterns to fresh hypotheses, not copycat submissions
 - [ ] If I found a vulnerability indication, I checked `docs/hackerone-disclosed-reports.md` for similar accepted exploit paths before building the next step
-- [ ] If using Burp MCP, it is local-only and filtered to in-scope traffic
+- [ ] If using Claude Code Burp MCP, it is local-only and filtered to in-scope traffic
 - [ ] I have 2 test accounts ready (attacker + victim)
 - [ ] I've defined my primary target: ONE crown jewel I'm hunting for today
 

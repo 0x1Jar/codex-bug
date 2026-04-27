@@ -43,6 +43,7 @@ Standalone copied commands keep their short names:
 ```text
 /recon target.com
 /hunt target.com
+/mobile app.apk
 /mobile-static app.apk
 /mobile-dynamic com.target.app
 /validate
@@ -54,13 +55,6 @@ When installed as a plugin, Claude Code may namespace skills by plugin name. If 
 ## Burp Suite MCP
 
 BountyForge does not auto-start an MCP server. Add your preferred Burp Suite MCP server locally, keep it bound to `127.0.0.1`, and only expose in-scope traffic.
-
-Codex examples:
-
-```bash
-codex mcp add burp-suite -- <your-burp-mcp-command>
-codex mcp add burp-suite --url http://127.0.0.1:<port>/mcp
-```
 
 Claude Code examples:
 

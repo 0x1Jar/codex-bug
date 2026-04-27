@@ -9,9 +9,9 @@
 - Codex project agents in `.codex/agents/`.
 - Non-blocking Codex session reminder hooks.
 - Mobile skills for `mobile`, `mobile-static`, and `mobile-dynamic`.
-- Claude Code commands for `/mobile-static` and `/mobile-dynamic`.
+- Claude Code commands for `/mobile`, `/mobile-static`, and `/mobile-dynamic`.
 - `docs/agent-support.md` for dual-platform setup.
-- `docs/mcp-burp-suite.md` for safe Burp Suite MCP setup.
+- `docs/mcp-burp-suite.md` for safe Claude Code Burp Suite MCP setup.
 - `docs/hackerone-disclosed-reports.md` for studying public report patterns and guiding Claude Code exploit-chain workflows.
 
 ### Updated
